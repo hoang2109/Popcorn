@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "66513F8F-5C7A-40F5-A30E-424E509EF9A0",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:Popcorn.xcodeproj",
+          "identifier" : "CEA2D0CD29D9349E00668907",
+          "name" : "Popcorn"
+        }
+      ]
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Popcorn.xcodeproj",
+        "identifier" : "CEA2D0E329D9349F00668907",
+        "name" : "PopcornTests"
+      }
+    }
+  ],
+  "version" : 1
+}
