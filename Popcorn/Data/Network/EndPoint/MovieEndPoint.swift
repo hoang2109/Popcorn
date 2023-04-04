@@ -12,6 +12,9 @@ enum MovieEndPoint {
     case getTopRatedMovies(Int)
     case getUpComingMovies(Int)
     case getNowPlayingMovies(Int)
+    case getMovieCredits(Int)
+    case getVideoTrailers(Int)
+    case getMovieDetail(Int)
 }
 
 extension MovieEndPoint: EndPoint {
@@ -26,6 +29,12 @@ extension MovieEndPoint: EndPoint {
             return "/3/movie/upcoming"
         case .getNowPlayingMovies:
             return "/3/movie/now_playing"
+        case .getMovieCredits(let movieId):
+            return "/3/movie/\(movieId)/credits"
+        case .getVideoTrailers(let movieId):
+            return "/3/movie/\(movieId)/videos"
+        case .getMovieDetail(let movieId):
+            return "/3/movie/\(movieId)"
         }
     }
     
@@ -41,6 +50,8 @@ extension MovieEndPoint: EndPoint {
             parameters["page"] = page
         case .getNowPlayingMovies(let page):
             parameters["page"] = page
+        default:
+            break
         }
         return parameters
     }

@@ -22,6 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         return URLSessionHTTPClient(with: configuration)
     }()
+    
+    var nav = UINavigationController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -39,10 +41,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                                              fetchUpComingMoviesUseCase: upcomingMoviesUseCase,
                                              fetchLatestMoviesUseCase: nowplayingMoviesUseCase)
         
-        window.rootViewController = HomeViewController(viewModel)
+        let homeVC = HomeViewController(viewModel)
+        homeVC.onSelect = onSelect(_:)
+        nav = UINavigationController(rootViewController: homeVC)
+        window.rootViewController = nav
         
         self.window = window
         self.window?.makeKeyAndVisible()
+    }
+    
+    func onSelect(_ movieId: Int) {
+        let creditsRepository = DefaultCreditRepository(networkService: networkService)
+        let videosRepository = DefaultVideoTrailerRepository(networkService: networkService)
+        let movieRepository = DefaultMovieRepository(networkService: networkService)
+        
+        let fetchCreditsUseCase = DefaultFetchCastsUseCase(creditRepository: creditsRepository)
+        let fetchVideosUseCase = DefaultFetchVideoTrialersUseCase(videoTrailerRepository: videosRepository)
+        let fetchMovieDetailUseCase = DefaultFetchMovieDetailUseCase(movieRepository: movieRepository)
+        
+        let viewModel = MovieDetailViewModel(movieId: movieId, fetchMovieDetailUseCase: fetchMovieDetailUseCase, fetchCreditsUseCase: fetchCreditsUseCase, fetchVideoTrailerUseCase: fetchVideosUseCase)
+        let storyboard = UIStoryboard(name: String(describing: MovieDetailViewController.self), bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as! MovieDetailViewController
+        vc.viewModel = viewModel
+        nav.pushViewController(vc, animated: true)
     }
 }
 

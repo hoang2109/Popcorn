@@ -13,4 +13,5 @@ protocol MovieRepository {
     func fetchTopRatedMovies() -> Observable<[Movie]>
     func fetchUpComingMovies() -> Observable<[Movie]>
     func fetchLatestMovies() -> Observable<[Movie]>
+    func fetchMovieDetail(with movieId: Int) -> Observable<MovieDetail>
 }

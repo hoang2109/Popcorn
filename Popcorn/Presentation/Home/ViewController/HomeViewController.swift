@@ -13,6 +13,8 @@ import RxDataSources
 
 class HomeViewController: UICollectionViewController {
     
+    var onSelect: ((Int) -> ())?
+    
     private var viewModel : HomeViewModel!
     private var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl(frame: .zero)
@@ -75,6 +77,14 @@ class HomeViewController: UICollectionViewController {
                 self?.viewModel.refreshMovies()
             })
             .disposed(by: disposeBag)
+        
+        
+        Observable
+          .zip( collectionView.rx.itemSelected, collectionView.rx.modelSelected(Movie.self) )
+          .bind { [weak self] (indexPath, item) in
+              self?.onSelect?(item.id)
+        }
+        .disposed(by: disposeBag)
     }
     
     private func configureCollectionViewDataSource() -> (
@@ -92,13 +102,15 @@ class HomeViewController: UICollectionViewController {
                     return cell
                 case 2:
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: UpcomingCell.self), for: indexPath) as! UpcomingCell
-                    let image = item.posterPath
-                    cell.setup(imagePath: image)
+                    if let image = item.posterPath {
+                        cell.setup(imagePath: image)
+                    }
                     return cell
                 case 3:
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: LatestCell.self), for: indexPath) as! LatestCell
-                    let image = item.posterPath
-                    cell.setup(imagePath: image)
+                    if let image = item.posterPath {
+                        cell.setup(imagePath: image)
+                    }
                     return cell
                 default:
                     return UICollectionViewCell()
