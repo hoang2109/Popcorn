@@ -68,6 +68,11 @@
 		CEA2D1A329DAF0F100668907 /* GenreResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D1A229DAF0F100668907 /* GenreResponse.swift */; };
 		CEA2D1A529DC186A00668907 /* MovieDetailInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D1A429DC186A00668907 /* MovieDetailInfo.swift */; };
 		CEA2D1A829DC29E800668907 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D1A729DC29E800668907 /* LoadingView.swift */; };
+		CEA2D1AC29DDABB300668907 /* SearchMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D1AB29DDABB300668907 /* SearchMovieViewController.swift */; };
+		CEA2D1AE29DDABE000668907 /* SearchMovieViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEA2D1AD29DDABE000668907 /* SearchMovieViewController.storyboard */; };
+		CEA2D1B229DDAC5900668907 /* SearchMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D1B129DDAC5900668907 /* SearchMovieTableViewCell.swift */; };
+		CEA2D1B529DDAFE800668907 /* SearchMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D1B429DDAFE800668907 /* SearchMovieViewModel.swift */; };
+		CEA2D1B729DDB0F000668907 /* FetchDiscoverMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D1B629DDB0F000668907 /* FetchDiscoverMoviesUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +146,11 @@
 		CEA2D1A229DAF0F100668907 /* GenreResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponse.swift; sourceTree = "<group>"; };
 		CEA2D1A429DC186A00668907 /* MovieDetailInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailInfo.swift; sourceTree = "<group>"; };
 		CEA2D1A729DC29E800668907 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		CEA2D1AB29DDABB300668907 /* SearchMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewController.swift; sourceTree = "<group>"; };
+		CEA2D1AD29DDABE000668907 /* SearchMovieViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchMovieViewController.storyboard; sourceTree = "<group>"; };
+		CEA2D1B129DDAC5900668907 /* SearchMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieTableViewCell.swift; sourceTree = "<group>"; };
+		CEA2D1B429DDAFE800668907 /* SearchMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewModel.swift; sourceTree = "<group>"; };
+		CEA2D1B629DDB0F000668907 /* FetchDiscoverMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchDiscoverMoviesUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +241,7 @@
 		CEA2D11229D93C0800668907 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				CEA2D1A929DDAB9500668907 /* Search */,
 				CEA2D1A629DC29E300668907 /* Common */,
 				CEA2D19129DAD77800668907 /* Ultilities */,
 				CEA2D17329DABA4600668907 /* MovieDetail */,
@@ -310,6 +321,7 @@
 				CEA2D18529DACA5200668907 /* FetchCreditsUseCase.swift */,
 				CEA2D18729DACAF500668907 /* FetchVideoTrialersUseCase.swift */,
 				CEA2D19C29DAE57F00668907 /* FetchMovieDetailUseCase.swift */,
+				CEA2D1B629DDB0F000668907 /* FetchDiscoverMoviesUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -488,6 +500,49 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		CEA2D1A929DDAB9500668907 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CEA2D1B329DDAF7200668907 /* ViewModel */,
+				CEA2D1AA29DDAB9E00668907 /* ViewController */,
+				CEA2D1AF29DDAC2C00668907 /* View */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		CEA2D1AA29DDAB9E00668907 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CEA2D1AB29DDABB300668907 /* SearchMovieViewController.swift */,
+				CEA2D1AD29DDABE000668907 /* SearchMovieViewController.storyboard */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CEA2D1AF29DDAC2C00668907 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEA2D1B029DDAC3800668907 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEA2D1B029DDAC3800668907 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CEA2D1B129DDAC5900668907 /* SearchMovieTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CEA2D1B329DDAF7200668907 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CEA2D1B429DDAFE800668907 /* SearchMovieViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -582,6 +637,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA2D1AE29DDABE000668907 /* SearchMovieViewController.storyboard in Resources */,
 				CEA2D17B29DABAA900668907 /* MovieDetailViewController.storyboard in Resources */,
 				CEA2D0DE29D9349E00668907 /* LaunchScreen.storyboard in Resources */,
 				CEA2D0DB29D9349E00668907 /* Assets.xcassets in Resources */,
@@ -610,12 +666,14 @@
 				CEA2D12529D94E4C00668907 /* LatestCell.swift in Sources */,
 				CEA2D12829D94EE700668907 /* HomeViewModel.swift in Sources */,
 				CEA2D12129D94C6100668907 /* TopRatedCell.swift in Sources */,
+				CEA2D1B729DDB0F000668907 /* FetchDiscoverMoviesUseCase.swift in Sources */,
 				CEA2D1A129DAE94700668907 /* MovieDetailResponse.swift in Sources */,
 				CEA2D18E29DACBAD00668907 /* DefaultCreditRepository.swift in Sources */,
 				CEA2D19029DACBCC00668907 /* DefaultVideoTrailerRepository.swift in Sources */,
 				CEA2D19329DAD78300668907 /* ViewState.swift in Sources */,
 				CEA2D16129D9D2CA00668907 /* DataTransferService.swift in Sources */,
 				CEA2D18629DACA5200668907 /* FetchCreditsUseCase.swift in Sources */,
+				CEA2D1B529DDAFE800668907 /* SearchMovieViewModel.swift in Sources */,
 				CEA2D18A29DACB3900668907 /* CreditRepository.swift in Sources */,
 				CEA2D16329DAA44800668907 /* AppConfiguration.swift in Sources */,
 				CEA2D19F29DAE5C300668907 /* MovieDetail.swift in Sources */,
@@ -629,6 +687,7 @@
 				CEA2D14129D98B7C00668907 /* FetchUpComingMoviesUseCase.swift in Sources */,
 				CEA2D18029DABCFC00668907 /* TrailerCollectionViewCell.swift in Sources */,
 				CEA2D14929D9B39100668907 /* MovieRepository.swift in Sources */,
+				CEA2D1AC29DDABB300668907 /* SearchMovieViewController.swift in Sources */,
 				CEA2D0D229D9349E00668907 /* AppDelegate.swift in Sources */,
 				CEA2D0D429D9349E00668907 /* SceneDelegate.swift in Sources */,
 				CEA2D11629D945D200668907 /* HomeViewController.swift in Sources */,
@@ -644,6 +703,7 @@
 				CEA2D14F29D9B74700668907 /* PageResultResponse.swift in Sources */,
 				CEA2D1A529DC186A00668907 /* MovieDetailInfo.swift in Sources */,
 				CEA2D14529D9B09D00668907 /* HomeSectionModel.swift in Sources */,
+				CEA2D1B229DDAC5900668907 /* SearchMovieTableViewCell.swift in Sources */,
 				CEA2D15D29D9D26400668907 /* NetworkError.swift in Sources */,
 				CEA2D18229DABD0C00668907 /* CreditsCollectionViewCell.swift in Sources */,
 				CEA2D11A29D9484200668907 /* Movie.swift in Sources */,

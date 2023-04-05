@@ -30,6 +30,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
+        let vc = createSearchMovieViewController()
+        
+        nav = UINavigationController(rootViewController: vc)
+        window.rootViewController = nav
+        
+        self.window = window
+        self.window?.makeKeyAndVisible()
+    }
+    
+    
+    
+    func onSelect(_ movieId: Int) {
+        let vc = createMovieDetailViewController(movieId)
+        nav.pushViewController(vc, animated: true)
+    }
+    
+    func createHomeViewController() -> HomeViewController {
         let movieRepository = DefaultMovieRepository(networkService: networkService)
         
         let popularMoviesUseCase = DefaultFetchPopularMoviesUseCase(movieRepository: movieRepository)
@@ -43,14 +60,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let homeVC = HomeViewController(viewModel)
         homeVC.onSelect = onSelect(_:)
-        nav = UINavigationController(rootViewController: homeVC)
-        window.rootViewController = nav
-        
-        self.window = window
-        self.window?.makeKeyAndVisible()
+        return homeVC
     }
     
-    func onSelect(_ movieId: Int) {
+    func createMovieDetailViewController(_ movieId: Int) -> MovieDetailViewController {
         let creditsRepository = DefaultCreditRepository(networkService: networkService)
         let videosRepository = DefaultVideoTrailerRepository(networkService: networkService)
         let movieRepository = DefaultMovieRepository(networkService: networkService)
@@ -63,7 +76,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: String(describing: MovieDetailViewController.self), bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as! MovieDetailViewController
         vc.viewModel = viewModel
-        nav.pushViewController(vc, animated: true)
+        return vc
+    }
+    
+    func createSearchMovieViewController() -> SearchMovieViewController {
+        let movieRepository = DefaultMovieRepository(networkService: networkService)
+        let fetchDiscoveryMoviesUseCase = DefaultFetchDiscoverMoviesUseCase(movieRepository: movieRepository)
+        let viewModel = SearchMovieViewModel(fetchDiscoveryMovieUseCase: fetchDiscoveryMoviesUseCase)
+        let vc = SearchMovieViewController.create(with: viewModel)
+        return vc
     }
 }
 

@@ -15,6 +15,7 @@ enum MovieEndPoint {
     case getMovieCredits(Int)
     case getVideoTrailers(Int)
     case getMovieDetail(Int)
+    case getDiscoverMovies
 }
 
 extension MovieEndPoint: EndPoint {
@@ -35,6 +36,8 @@ extension MovieEndPoint: EndPoint {
             return "/3/movie/\(movieId)/videos"
         case .getMovieDetail(let movieId):
             return "/3/movie/\(movieId)"
+        case .getDiscoverMovies:
+            return "/3/discover/movie"
         }
     }
     
@@ -50,6 +53,12 @@ extension MovieEndPoint: EndPoint {
             parameters["page"] = page
         case .getNowPlayingMovies(let page):
             parameters["page"] = page
+        case .getDiscoverMovies:
+            parameters["sort_by"] = "popularity"
+            parameters["include_adult"] = false
+            parameters["include_video"] = false
+            parameters["page"] = 1
+            parameters["with_watch_monetization_types"] = "flatrate"
         default:
             break
         }

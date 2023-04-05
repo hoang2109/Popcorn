@@ -32,6 +32,10 @@ class DefaultMovieRepository: MovieRepository {
         return fetchMovies(MovieEndPoint.getNowPlayingMovies(1))
     }
     
+    func fetchDiscoverMovies() -> RxSwift.Observable<[Movie]> {
+        return fetchMovies(MovieEndPoint.getDiscoverMovies)
+    }
+    
     private func fetchMovies(_ endPoint: EndPoint) -> Observable<[Movie]> {
         return networkService.request(endPoint, PageResultResponse<MovieResponse>.self).map {
             $0.results.toModels()
