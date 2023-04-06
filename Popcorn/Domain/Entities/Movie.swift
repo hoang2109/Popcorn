@@ -12,7 +12,7 @@ struct Movie {
     let overview: String
     let popularity: Double
     let posterPath: String?
-    let releaseDate: String
+    let releaseDate: String?
     let title: String
     let voteAverage: Double
     let voteCount: Int

@@ -17,6 +17,7 @@ enum MovieEndPoint {
     case getMovieDetail(Int)
     case getDiscoverMovies
     case searchMovie(String)
+    case getMovies(String, Int)
 }
 
 extension MovieEndPoint: EndPoint {
@@ -41,6 +42,8 @@ extension MovieEndPoint: EndPoint {
             return "/3/discover/movie"
         case .searchMovie:
             return "/3/search/movie"
+        case .getMovies(let category, _):
+            return "/3/movie/\(category)"
         }
     }
     
@@ -65,6 +68,8 @@ extension MovieEndPoint: EndPoint {
         case .searchMovie(let query):
             parameters["query"] = query
             parameters["page"] = 1
+        case .getMovies( _, let page):
+            parameters["page"] = page
         default:
             break
         }
