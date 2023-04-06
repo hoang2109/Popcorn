@@ -33,6 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let vc = createSearchMovieViewController()
         
         nav = UINavigationController(rootViewController: vc)
+        nav.navigationBar.barStyle = .black
         window.rootViewController = nav
         
         self.window = window
@@ -82,8 +83,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func createSearchMovieViewController() -> SearchMovieViewController {
         let movieRepository = DefaultMovieRepository(networkService: networkService)
         let fetchDiscoveryMoviesUseCase = DefaultFetchDiscoverMoviesUseCase(movieRepository: movieRepository)
-        let viewModel = SearchMovieViewModel(fetchDiscoveryMovieUseCase: fetchDiscoveryMoviesUseCase)
+        let searchMoviesUseCase = DefaultSearchMoviesUseCase(movieRepository: movieRepository)
+        let viewModel = SearchMovieViewModel(fetchDiscoveryMovieUseCase: fetchDiscoveryMoviesUseCase, searchMoviesUseCase: searchMoviesUseCase)
         let vc = SearchMovieViewController.create(with: viewModel)
+        vc.onSelect = onSelect(_:)
         return vc
     }
 }

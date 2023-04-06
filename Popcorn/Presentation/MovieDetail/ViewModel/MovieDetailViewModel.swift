@@ -38,6 +38,10 @@ final class MovieDetailViewModel {
         videosViewState = videosViewStateSubject.asObservable()
     }
     
+    deinit {
+      print("deinit \(Self.self)")
+    }
+    
     func viewDidLoad() {
         let multipleRequests = Observable.zip(fetchMovieDetailUseCase.execute(requestValue: FetchMovieDetailUseCaseRequestValue(identifier: movieId)),
                                               fetchCreditsUseCase.execute(requestValue: FetchCreditsUseCaseRequestValue(identifier: movieId)),

@@ -18,6 +18,7 @@ class HomeViewController: UICollectionViewController {
     private var viewModel : HomeViewModel!
     private var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl(frame: .zero)
+        refreshControl.tintColor = .white
         return refreshControl
     }()
     
@@ -26,6 +27,10 @@ class HomeViewController: UICollectionViewController {
     convenience init(_ viewModel: HomeViewModel) {
         self.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.viewModel = viewModel
+    }
+    
+    deinit {
+      print("deinit \(Self.self)")
     }
     
     override func viewDidLoad() {
@@ -37,13 +42,15 @@ class HomeViewController: UICollectionViewController {
     }
     
     func configureViews() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .black
+        
         configureCollectionView()
         registerOurCells()
     }
     
     private func configureCollectionView() {
         collectionView.collectionViewLayout = HomeCollectionViewLayout.createLayouts()
+        collectionView.backgroundColor = .black
         collectionView.refreshControl = refreshControl
         collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = nil

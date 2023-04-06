@@ -36,6 +36,10 @@ class DefaultMovieRepository: MovieRepository {
         return fetchMovies(MovieEndPoint.getDiscoverMovies)
     }
     
+    func searchMovies(query: String) -> Observable<[Movie]> {
+        return fetchMovies(MovieEndPoint.searchMovie(query))
+    }
+    
     private func fetchMovies(_ endPoint: EndPoint) -> Observable<[Movie]> {
         return networkService.request(endPoint, PageResultResponse<MovieResponse>.self).map {
             $0.results.toModels()

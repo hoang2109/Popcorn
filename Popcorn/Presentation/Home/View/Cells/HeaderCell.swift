@@ -15,6 +15,7 @@ class HeaderLabelCell: UICollectionViewCell {
         label.text = "POPULAR FILMS"
         label.font = .boldSystemFont(ofSize: 20)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
         return label
     }()
     

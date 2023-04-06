@@ -10,7 +10,10 @@ import RxSwift
 
 class SearchMovieViewController: UIViewController, StoryboardInstantiable {
 
-    @IBOutlet weak var searchTableView: UITableView!
+    var onSelect: ((Int) -> ())?
+    
+    @IBOutlet weak var discoveryMoviesTableView: UITableView!
+    var searchController: UISearchController!
     var viewModel: SearchMovieViewModel!
     
     private let disposeBag = DisposeBag()
@@ -27,26 +30,79 @@ class SearchMovieViewController: UIViewController, StoryboardInstantiable {
         
         configureViews()
         bind(to: viewModel)
+        
         viewModel.viewDidLoad()
     }
     
     deinit {
-        print("deinit SearchMovieViewController")
+      print("deinit \(Self.self)")
     }
     
-    func configureViews() {
-        searchTableView.rowHeight = 172
+    private func configureViews() {
+        configureNavigationBar()
+        configureResultTableView()
+        configureSearchBarController()
+    }
+    
+    private func configureNavigationBar() {
+        navigationItem.title = "Search"
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
+    private func configureSearchBarController() {
+        let resultsController = MoviesResultViewController(viewModel: viewModel)
+        resultsController.onSelect = onSelect
+        searchController = UISearchController(searchResultsController: resultsController)
+        searchController.searchBar.placeholder = "Search for a movie"
+        searchController.searchBar.delegate = self
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
+    
+    private func configureResultTableView() {
+        let nibName = UINib(nibName: "SearchMovieTableViewCell", bundle: nil)
+        discoveryMoviesTableView.register(nibName, forCellReuseIdentifier: "SearchMovieTableViewCell")
+        discoveryMoviesTableView.rowHeight = 172
     }
     
     private func bind(to viewModel: SearchMovieViewModel) {
+        searchController.searchBar.rx.text.orEmpty
+            .do(onNext: { [weak self] in
+                if $0.count == 0 {
+                    self?.viewModel.clearSearchResult()
+                }
+            })
+            .filter { $0.count > 0 }
+            .debounce(.milliseconds(1000), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] (text) in
+                self?.viewModel.searchMovie(query: text)
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.discoverMoviesViewState
             .map { $0.currentEntities }
-            .bind(to: searchTableView.rx.items(cellIdentifier: String(describing: SearchMovieTableViewCell.self), cellType: SearchMovieTableViewCell.self)) { [weak self] (index, element, cell) in
-                guard let self = self else { return }
+            .bind(to: discoveryMoviesTableView.rx.items(cellIdentifier: String(describing: SearchMovieTableViewCell.self), cellType: SearchMovieTableViewCell.self)) {  (index, element, cell) in
                 cell.titleLabel.text = element.title
                 cell.posterImageView.imageFromUrl(urlString: element.posterPath, placeHolderImage: UIImage())
                 cell.scoreLabel.text = String(format:"%.1f", element.voteAverage) + " (\(String(element.voteCount)))"
             }
             .disposed(by: disposeBag)
+        
+        Observable
+          .zip( discoveryMoviesTableView.rx.itemSelected, discoveryMoviesTableView.rx.modelSelected(Movie.self) )
+          .bind { [weak self] (indexPath, item) in
+              self?.onSelect?(item.id)
+        }
+        .disposed(by: disposeBag)
+    }
+}
+
+
+// MARK: - UISearchBarDelegate
+
+extension SearchMovieViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.clearSearchResult()
     }
 }
