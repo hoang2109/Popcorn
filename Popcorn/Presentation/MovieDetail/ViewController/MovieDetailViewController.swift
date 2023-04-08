@@ -11,6 +11,7 @@ import RxSwift
 
 class MovieDetailViewController: UIViewController {
     
+    var onSelect: ((Int) -> ())?
     var viewModel : MovieDetailViewModel!
     
     @IBOutlet weak var posterView: UIView!
@@ -86,6 +87,13 @@ class MovieDetailViewController: UIViewController {
                 if let url = URL(string: "https://www.youtube.com/embed/\(videoKey)") {
                     cell.trailerWebView.load(URLRequest(url: url))
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        Observable
+            .zip( castCollectionView.rx.itemSelected, castCollectionView.rx.modelSelected(Cast.self) )
+            .bind { [weak self] (indexPath, item) in
+                self?.onSelect?(item.id)
             }
             .disposed(by: disposeBag)
     }

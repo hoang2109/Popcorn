@@ -47,6 +47,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         nav.pushViewController(vc, animated: true)
     }
     
+    func onSelectActor(_ actorId: Int) {
+        let vc = createActorDetailViewController(actorId)
+        nav.present(vc, animated: true)
+    }
+    
     func createHomeViewController() -> HomeViewController {
         let movieRepository = DefaultMovieRepository(networkService: networkService)
         
@@ -77,6 +82,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let storyboard = UIStoryboard(name: String(describing: MovieDetailViewController.self), bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as! MovieDetailViewController
         vc.viewModel = viewModel
+        vc.onSelect = onSelectActor
         return vc
     }
     
@@ -96,6 +102,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewModel = MovieListViewModel(category: "popular", fetchMoviesUseCase: fetchMoviesByCategoryUseCase)
         let vc = MovieListViewController.create(with: viewModel)
         vc.onSelect = onSelect(_:)
+        return vc
+    }
+    
+    func createActorDetailViewController(_ actorId: Int) -> ActorDetailViewController {
+        let actorRepository = DefaultActorRepository(networkService: networkService)
+        let fetchActorDetailUseCase = DefaultFetchActorDetailUseCase(actorRepository: actorRepository)
+        let fetchActorCreditsUseCase = DefaultFetchActorCreditsUseCase(actorRepository: actorRepository)
+        let viewModel = ActorDetailViewModel(actorId: actorId, fetchActorDetailUseCase: fetchActorDetailUseCase, fetchActorCreditsUseCase: fetchActorCreditsUseCase)
+        let vc = ActorDetailViewController.create(with: viewModel)
+        vc.onSelect = { [weak self, weak vc] in
+            vc?.dismiss(true)
+            self?.onSelect($0)
+        }
         return vc
     }
 }

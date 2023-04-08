@@ -18,6 +18,8 @@ enum MovieEndPoint {
     case getDiscoverMovies
     case searchMovie(String)
     case getMovies(String, Int)
+    case getActorDetail(Int)
+    case getActorCredits(Int)
 }
 
 extension MovieEndPoint: EndPoint {
@@ -44,6 +46,10 @@ extension MovieEndPoint: EndPoint {
             return "/3/search/movie"
         case .getMovies(let category, _):
             return "/3/movie/\(category)"
+        case .getActorDetail(let id):
+            return "/3/person/\(id)"
+        case .getActorCredits(let id):
+            return "/3/person/\(id)/movie_credits"
         }
     }
     
