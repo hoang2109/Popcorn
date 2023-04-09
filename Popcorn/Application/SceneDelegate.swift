@@ -10,112 +10,17 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    
-    lazy var networkService: DataTransferService = {
-        let queryParameters = [
-            "api_key": AppConfiguration.apiKey,
-            "language": "en"]
-        
-        let configuration = DefaultNetworkConfiguration(
-            baseURL: AppConfiguration.apiBaseURL,
-            queryParameters: queryParameters)
-        
-        return URLSessionHTTPClient(with: configuration)
-    }()
+    var appCoordinator: AppCoordinator!
     
     var nav = UINavigationController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let window = UIWindow(windowScene: windowScene)
-        
-        let vc = createMovieListViewController()
-        
-        nav = UINavigationController(rootViewController: vc)
-        nav.navigationBar.barStyle = .black
-        window.rootViewController = nav
-        
-        self.window = window
-        self.window?.makeKeyAndVisible()
-    }
-    
-    
-    
-    func onSelect(_ movieId: Int) {
-        let vc = createMovieDetailViewController(movieId)
-        nav.pushViewController(vc, animated: true)
-    }
-    
-    func onSelectActor(_ actorId: Int) {
-        let vc = createActorDetailViewController(actorId)
-        nav.present(vc, animated: true)
-    }
-    
-    func createHomeViewController() -> HomeViewController {
-        let movieRepository = DefaultMovieRepository(networkService: networkService)
-        
-        let popularMoviesUseCase = DefaultFetchPopularMoviesUseCase(movieRepository: movieRepository)
-        let topRatedMoviesUseCase = DefaultFetchTopRatedMoviesUseCase(movieRepository: movieRepository)
-        let upcomingMoviesUseCase = DefaultFetchUpComingMoviesUseCase(movieRepository: movieRepository)
-        let nowplayingMoviesUseCase = DefaultFetchLatestMoviesUseCase(movieRepository: movieRepository)
-        let viewModel = DefaultHomeViewModel(fetchPopularMoviesUseCase: popularMoviesUseCase,
-                                             fetchTopRatedMoviesUseCase: topRatedMoviesUseCase,
-                                             fetchUpComingMoviesUseCase: upcomingMoviesUseCase,
-                                             fetchLatestMoviesUseCase: nowplayingMoviesUseCase)
-        
-        let homeVC = HomeViewController(viewModel)
-        homeVC.onSelect = onSelect(_:)
-        return homeVC
-    }
-    
-    func createMovieDetailViewController(_ movieId: Int) -> MovieDetailViewController {
-        let creditsRepository = DefaultCreditRepository(networkService: networkService)
-        let videosRepository = DefaultVideoTrailerRepository(networkService: networkService)
-        let movieRepository = DefaultMovieRepository(networkService: networkService)
-        
-        let fetchCreditsUseCase = DefaultFetchCastsUseCase(creditRepository: creditsRepository)
-        let fetchVideosUseCase = DefaultFetchVideoTrialersUseCase(videoTrailerRepository: videosRepository)
-        let fetchMovieDetailUseCase = DefaultFetchMovieDetailUseCase(movieRepository: movieRepository)
-        
-        let viewModel = MovieDetailViewModel(movieId: movieId, fetchMovieDetailUseCase: fetchMovieDetailUseCase, fetchCreditsUseCase: fetchCreditsUseCase, fetchVideoTrailerUseCase: fetchVideosUseCase)
-        let storyboard = UIStoryboard(name: String(describing: MovieDetailViewController.self), bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: String(describing: MovieDetailViewController.self)) as! MovieDetailViewController
-        vc.viewModel = viewModel
-        vc.onSelect = onSelectActor
-        return vc
-    }
-    
-    func createSearchMovieViewController() -> SearchMovieViewController {
-        let movieRepository = DefaultMovieRepository(networkService: networkService)
-        let fetchDiscoveryMoviesUseCase = DefaultFetchDiscoverMoviesUseCase(movieRepository: movieRepository)
-        let searchMoviesUseCase = DefaultSearchMoviesUseCase(movieRepository: movieRepository)
-        let viewModel = SearchMovieViewModel(fetchDiscoveryMovieUseCase: fetchDiscoveryMoviesUseCase, searchMoviesUseCase: searchMoviesUseCase)
-        let vc = SearchMovieViewController.create(with: viewModel)
-        vc.onSelect = onSelect(_:)
-        return vc
-    }
-    
-    func createMovieListViewController() -> MovieListViewController {
-        let movieRepository = DefaultMovieRepository(networkService: networkService)
-        let fetchMoviesByCategoryUseCase = DefaultFetchMoviesByCategoryUseCase(movieRepository: movieRepository)
-        let viewModel = MovieListViewModel(category: "popular", fetchMoviesUseCase: fetchMoviesByCategoryUseCase)
-        let vc = MovieListViewController.create(with: viewModel)
-        vc.onSelect = onSelect(_:)
-        return vc
-    }
-    
-    func createActorDetailViewController(_ actorId: Int) -> ActorDetailViewController {
-        let actorRepository = DefaultActorRepository(networkService: networkService)
-        let fetchActorDetailUseCase = DefaultFetchActorDetailUseCase(actorRepository: actorRepository)
-        let fetchActorCreditsUseCase = DefaultFetchActorCreditsUseCase(actorRepository: actorRepository)
-        let viewModel = ActorDetailViewModel(actorId: actorId, fetchActorDetailUseCase: fetchActorDetailUseCase, fetchActorCreditsUseCase: fetchActorCreditsUseCase)
-        let vc = ActorDetailViewController.create(with: viewModel)
-        vc.onSelect = { [weak self, weak vc] in
-            vc?.dismiss(true)
-            self?.onSelect($0)
-        }
-        return vc
+        window = UIWindow(windowScene: windowScene)
+        let appDIContainer = AppDIContainer(appConfiguration: DefaultAppConfiguration())
+        appCoordinator = AppCoordinator(window: window!, appDIContainer: appDIContainer)
+        appCoordinator.start()
     }
 }
 

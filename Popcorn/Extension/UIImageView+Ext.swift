@@ -16,7 +16,7 @@ extension UIImageView {
     
         if var urlString = urlString {
             if !urlString.hasPrefix("http") {
-                urlString = AppConfiguration.imagesBaseURL + urlString
+                urlString = "https://image.tmdb.org/t/p/w500" + urlString
             }
             
             if let url = URL(string: urlString) {

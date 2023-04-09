@@ -8,19 +8,24 @@
 import UIKit
 import RxSwift
 
-class SearchMovieViewController: UIViewController, StoryboardInstantiable {
+protocol SearchMovieViewControllerDelegate: AnyObject {
+    func didSelectMovie(_ movieId: Int)
+}
 
-    var onSelect: ((Int) -> ())?
+class SearchMovieViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var discoveryMoviesTableView: UITableView!
-    var searchController: UISearchController!
-    var viewModel: SearchMovieViewModel!
+    private var searchController: UISearchController!
+    
+    private var viewModel: SearchMovieViewModel!
+    private weak var delegate: SearchMovieViewControllerDelegate?
     
     private let disposeBag = DisposeBag()
     
-    static func create(with viewModel: SearchMovieViewModel) -> SearchMovieViewController {
+    static func create(with viewModel: SearchMovieViewModel, _ delegate: SearchMovieViewControllerDelegate?) -> SearchMovieViewController {
         let controller = SearchMovieViewController.instantiateViewController()
         controller.viewModel = viewModel
+        controller.delegate = delegate
         return controller
     }
     
@@ -51,7 +56,9 @@ class SearchMovieViewController: UIViewController, StoryboardInstantiable {
     
     private func configureSearchBarController() {
         let resultsController = MoviesResultViewController(viewModel: viewModel)
-        resultsController.onSelect = onSelect
+        resultsController.onSelect = { [weak self] in
+            self?.delegate?.didSelectMovie($0)
+        }
         searchController = UISearchController(searchResultsController: resultsController)
         searchController.searchBar.placeholder = "Search for a movie"
         searchController.searchBar.delegate = self
@@ -92,7 +99,7 @@ class SearchMovieViewController: UIViewController, StoryboardInstantiable {
         Observable
           .zip( discoveryMoviesTableView.rx.itemSelected, discoveryMoviesTableView.rx.modelSelected(Movie.self) )
           .bind { [weak self] (indexPath, item) in
-              self?.onSelect?(item.id)
+              self?.delegate?.didSelectMovie(item.id)
         }
         .disposed(by: disposeBag)
     }

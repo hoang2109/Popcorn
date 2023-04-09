@@ -8,18 +8,22 @@
 import UIKit
 import RxSwift
 
+protocol MovieListViewControllerDelegate: AnyObject {
+    func didSelectMovie(_ movieId: Int)
+}
+
 class MovieListViewController: UITableViewController, StoryboardInstantiable {
-    var onSelect: ((Int) -> ())?
-    
-    var viewModel: MovieListViewModel!
     
     private var loadingView = LoadingView(frame: .zero)
     
+    private var viewModel: MovieListViewModel!
+    private weak var delegate: MovieListViewControllerDelegate?
     private let disposeBag = DisposeBag()
     
-    static func create(with viewModel: MovieListViewModel) -> MovieListViewController {
+    static func create(with viewModel: MovieListViewModel, _ delegate: MovieListViewControllerDelegate?) -> MovieListViewController {
         let controller = MovieListViewController.instantiateViewController()
         controller.viewModel = viewModel
+        controller.delegate = delegate
         return controller
     }
     
@@ -89,7 +93,7 @@ class MovieListViewController: UITableViewController, StoryboardInstantiable {
         Observable
             .zip( tableView.rx.itemSelected, tableView.rx.modelSelected(Movie.self) )
             .bind { [weak self] (indexPath, item) in
-                self?.onSelect?(item.id)
+                self?.delegate?.didSelectMovie(item.id)
             }
             .disposed(by: disposeBag)
     }

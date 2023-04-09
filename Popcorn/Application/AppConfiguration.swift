@@ -7,17 +7,23 @@
 
 import Foundation
 
-struct AppConfiguration {
+protocol AppConfiguration {
+    var apiKey: String { get }
+    var apiBaseURL: String { get }
+    var imagesBaseURL: String { get }
+}
+
+class DefaultAppConfiguration: AppConfiguration {
     
-    static var apiKey: String = {
+    var apiKey: String = {
         return "680ebd51dcc601e95626cfd2b274da81"
     }()
     
-    static var apiBaseURL: String = {
+    var apiBaseURL: String = {
         return "https://api.themoviedb.org/3"
     }()
     
-    static var imagesBaseURL: String = {
+    var imagesBaseURL: String = {
         return "https://image.tmdb.org/t/p/w500"
     }()
 }

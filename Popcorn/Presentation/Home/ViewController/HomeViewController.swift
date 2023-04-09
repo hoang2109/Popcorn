@@ -11,22 +11,26 @@ import RxCocoa
 import RxSwift
 import RxDataSources
 
+protocol HomeViewControllerDelegate: AnyObject {
+    func didSelectMovie(_ movieId: Int)
+}
+
 class HomeViewController: UICollectionViewController {
     
-    var onSelect: ((Int) -> ())?
-    
-    private var viewModel : HomeViewModel!
     private var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl(frame: .zero)
         refreshControl.tintColor = .white
         return refreshControl
     }()
     
+    private var viewModel : HomeViewModel!
+    private weak var delegate: HomeViewControllerDelegate?
     private var disposeBag = DisposeBag()
     
-    convenience init(_ viewModel: HomeViewModel) {
+    convenience init(_ viewModel: HomeViewModel, _ delegate: HomeViewControllerDelegate? = nil) {
         self.init(collectionViewLayout: UICollectionViewFlowLayout())
         self.viewModel = viewModel
+        self.delegate = delegate
     }
     
     deinit {
@@ -89,7 +93,7 @@ class HomeViewController: UICollectionViewController {
         Observable
           .zip( collectionView.rx.itemSelected, collectionView.rx.modelSelected(Movie.self) )
           .bind { [weak self] (indexPath, item) in
-              self?.onSelect?(item.id)
+              self?.delegate?.didSelectMovie(item.id)
         }
         .disposed(by: disposeBag)
     }

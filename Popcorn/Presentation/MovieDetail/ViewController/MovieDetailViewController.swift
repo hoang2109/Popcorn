@@ -9,10 +9,11 @@ import Foundation
 import UIKit
 import RxSwift
 
-class MovieDetailViewController: UIViewController {
-    
-    var onSelect: ((Int) -> ())?
-    var viewModel : MovieDetailViewModel!
+protocol MovieDetailViewControllerDelegate: AnyObject {
+    func didSelectActor(_ actorId: Int)
+}
+
+class MovieDetailViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var posterView: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
@@ -23,10 +24,19 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var addWatchlistButton: UIButton!
     @IBOutlet weak var castCollectionView: UICollectionView!
     @IBOutlet weak var trailerCollectionView: UICollectionView!
-    
     private let loadingView = LoadingView(frame: .zero)
     
+    private var viewModel : MovieDetailViewModel!
+    private weak var delegate: MovieDetailViewControllerDelegate?
+    
     private var disposeBag = DisposeBag()
+    
+    static func create(with viewModel: MovieDetailViewModel, _ delegate: MovieDetailViewControllerDelegate?) -> MovieDetailViewController {
+        let controller = MovieDetailViewController.instantiateViewController()
+        controller.viewModel = viewModel
+        controller.delegate = delegate
+        return controller
+    }
     
     //MARK: - Lifecycle
     override func loadView() {
@@ -93,7 +103,7 @@ class MovieDetailViewController: UIViewController {
         Observable
             .zip( castCollectionView.rx.itemSelected, castCollectionView.rx.modelSelected(Cast.self) )
             .bind { [weak self] (indexPath, item) in
-                self?.onSelect?(item.id)
+                self?.delegate?.didSelectActor(item.castId)
             }
             .disposed(by: disposeBag)
     }
