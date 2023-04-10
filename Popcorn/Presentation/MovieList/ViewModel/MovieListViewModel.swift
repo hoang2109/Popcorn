@@ -16,12 +16,14 @@ class MovieListViewModel {
     private let category: String
     private let fetchMoviesUseCase: FetchMoviesByCategoryUseCase
     private var movies = [Movie]()
+    private let coordinator: MainCoordinator
     
     private let disposeBag = DisposeBag()
     
-    init(category: String, fetchMoviesUseCase: FetchMoviesByCategoryUseCase) {
+    init(category: String, fetchMoviesUseCase: FetchMoviesByCategoryUseCase, coordinator: MainCoordinator) {
         self.category = category
         self.fetchMoviesUseCase = fetchMoviesUseCase
+        self.coordinator = coordinator
         
         moviesViewState = moviesViewStateSubject.asObservable()
     }
@@ -70,5 +72,9 @@ class MovieListViewModel {
         } else {
             return .loaded(movies)
         }
+    }
+    
+    func didSelectMovie(_ movieId: Int) {
+        coordinator.navigate(to: .movieDetail(movieId))
     }
 }

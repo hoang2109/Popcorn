@@ -39,7 +39,7 @@
 		CEA2D0E929D9349F00668907 /* PopcornTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D0E829D9349F00668907 /* PopcornTests.swift */; };
 		CEA2D11629D945D200668907 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D11529D945D200668907 /* HomeViewController.swift */; };
 		CEA2D11A29D9484200668907 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D11929D9484200668907 /* Movie.swift */; };
-		CEA2D11D29D9498800668907 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D11C29D9498800668907 /* HeaderCell.swift */; };
+		CEA2D11D29D9498800668907 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D11C29D9498800668907 /* HeaderView.swift */; };
 		CEA2D11F29D949FF00668907 /* PopularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D11E29D949FF00668907 /* PopularCell.swift */; };
 		CEA2D12129D94C6100668907 /* TopRatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D12029D94C6100668907 /* TopRatedCell.swift */; };
 		CEA2D12329D94E1500668907 /* UpcomingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D12229D94E1500668907 /* UpcomingCell.swift */; };
@@ -150,7 +150,7 @@
 		CEA2D11129D93B1200668907 /* Popcorn.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Popcorn.xctestplan; sourceTree = "<group>"; };
 		CEA2D11529D945D200668907 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CEA2D11929D9484200668907 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
-		CEA2D11C29D9498800668907 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		CEA2D11C29D9498800668907 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		CEA2D11E29D949FF00668907 /* PopularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCell.swift; sourceTree = "<group>"; };
 		CEA2D12029D94C6100668907 /* TopRatedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedCell.swift; sourceTree = "<group>"; };
 		CEA2D12229D94E1500668907 /* UpcomingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingCell.swift; sourceTree = "<group>"; };
@@ -487,7 +487,7 @@
 		CEA2D11B29D9491D00668907 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				CEA2D11C29D9498800668907 /* HeaderCell.swift */,
+				CEA2D11C29D9498800668907 /* HeaderView.swift */,
 				CEA2D11E29D949FF00668907 /* PopularCell.swift */,
 				CEA2D12029D94C6100668907 /* TopRatedCell.swift */,
 				CEA2D12229D94E1500668907 /* UpcomingCell.swift */,
@@ -912,7 +912,7 @@
 				CEA2D14D29D9B59900668907 /* MovieResponse.swift in Sources */,
 				CEA2D18829DACAF500668907 /* FetchVideoTrialersUseCase.swift in Sources */,
 				CEA2D1A329DAF0F100668907 /* GenreResponse.swift in Sources */,
-				CEA2D11D29D9498800668907 /* HeaderCell.swift in Sources */,
+				CEA2D11D29D9498800668907 /* HeaderView.swift in Sources */,
 				CE1557FC29E1487C00A8666A /* ActorCreditsCell.swift in Sources */,
 				CE15581829E29E5100A8666A /* MainCoordinator.swift in Sources */,
 				CEA2D19929DAD95700668907 /* VideoTrailer.swift in Sources */,

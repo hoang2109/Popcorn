@@ -41,6 +41,7 @@ class HomeViewController: UICollectionViewController {
     
     func configureViews() {
         view.backgroundColor = .black
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
         configureCollectionView()
         registerOurCells()
@@ -61,7 +62,7 @@ class HomeViewController: UICollectionViewController {
         collectionView.register(UpcomingCell.self, forCellWithReuseIdentifier: String(describing: UpcomingCell.self))
         collectionView.register(LatestCell.self, forCellWithReuseIdentifier: String(describing: LatestCell.self))
         collectionView.register(PopularCell.self, forCellWithReuseIdentifier: String(describing: PopularCell.self))
-        collectionView.register(HeaderLabelCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: HeaderLabelCell.self))
+        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: String(describing: HeaderView.self))
     }
     
     private func bind(to viewModel: HomeViewModel) {
@@ -95,37 +96,39 @@ class HomeViewController: UICollectionViewController {
     private func configureCollectionViewDataSource() -> (
         configureCell: CollectionViewSectionedDataSource<HomeSectionModel>.ConfigureCell,  configureSupplementaryView: CollectionViewSectionedDataSource<HomeSectionModel>.ConfigureSupplementaryView ) {
             let configureCell: CollectionViewSectionedDataSource<HomeSectionModel>.ConfigureCell = { dataSource, collectionView, indexPath, item in
-
-                switch indexPath.section {
-                case 0:
+                let section = dataSource[indexPath.section]
+                switch section {
+                case .popularMovies:
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: PopularCell.self), for: indexPath) as! PopularCell
                     cell.setup(movie: item, itemIndex: (indexPath.item + 1))
                     return cell
-                case 1:
+                case .topRatedMovies:
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: TopRatedCell.self), for: indexPath) as! TopRatedCell
                     cell.setup(movieInfo: item)
                     return cell
-                case 2:
+                case .upcomingMovies:
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: UpcomingCell.self), for: indexPath) as! UpcomingCell
                     if let image = item.posterPath {
                         cell.setup(imagePath: image)
                     }
                     return cell
-                case 3:
+                case .latestMovies:
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: LatestCell.self), for: indexPath) as! LatestCell
                     if let image = item.posterPath {
                         cell.setup(imagePath: image)
                     }
                     return cell
-                default:
-                    return UICollectionViewCell()
                 }
             }
 
             let configureSupplementaryView: CollectionViewSectionedDataSource<HomeSectionModel>.ConfigureSupplementaryView = {(dataSource, collectionView, kind, indexPath) -> UICollectionReusableView in
-                let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: HeaderLabelCell.self), for: indexPath) as! HeaderLabelCell
-                
-                headerCell.label.text = MovieTypes.allCases[indexPath.section].rawValue
+                let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: String(describing: HeaderView.self), for: indexPath) as! HeaderView
+                let cateId = dataSource[indexPath.section].key
+                let title = dataSource[indexPath.section].title
+                headerCell.label.text = title
+                headerCell.onTap = { [weak self] in
+                    self?.viewModel.didSelectMovieCategory(cateId, title)
+                }
                 return headerCell
             }
 

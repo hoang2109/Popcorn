@@ -52,6 +52,7 @@ class SearchMovieViewController: UIViewController, StoryboardInstantiable {
     private func configureNavigationBar() {
         navigationItem.title = "Search"
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     private func configureSearchBarController() {

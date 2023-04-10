@@ -8,22 +8,16 @@
 import UIKit
 import RxSwift
 
-protocol MovieListViewControllerDelegate: AnyObject {
-    func didSelectMovie(_ movieId: Int)
-}
-
 class MovieListViewController: UITableViewController, StoryboardInstantiable {
     
     private var loadingView = LoadingView(frame: .zero)
     
     private var viewModel: MovieListViewModel!
-    private weak var delegate: MovieListViewControllerDelegate?
     private let disposeBag = DisposeBag()
     
-    static func create(with viewModel: MovieListViewModel, _ delegate: MovieListViewControllerDelegate?) -> MovieListViewController {
+    static func create(with viewModel: MovieListViewModel) -> MovieListViewController {
         let controller = MovieListViewController.instantiateViewController()
         controller.viewModel = viewModel
-        controller.delegate = delegate
         return controller
     }
     
@@ -47,8 +41,8 @@ class MovieListViewController: UITableViewController, StoryboardInstantiable {
     }
     
     private func configureNavigationBar() {
-        navigationItem.title = ""
         navigationController?.navigationBar.prefersLargeTitles = false
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     private func configureResultTableView() {
@@ -93,7 +87,7 @@ class MovieListViewController: UITableViewController, StoryboardInstantiable {
         Observable
             .zip( tableView.rx.itemSelected, tableView.rx.modelSelected(Movie.self) )
             .bind { [weak self] (indexPath, item) in
-                self?.delegate?.didSelectMovie(item.id)
+                self?.viewModel.didSelectMovie(item.id)
             }
             .disposed(by: disposeBag)
     }

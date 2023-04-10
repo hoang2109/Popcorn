@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class DefaultMainComponentsFactory: MainComponentsFactory {
+    
     private let networkService: DataTransferService
     
     private lazy var movieRepository: MovieRepository = {
@@ -37,6 +38,14 @@ class DefaultMainComponentsFactory: MainComponentsFactory {
         
         let homeVC = HomeViewController(viewModel)
         return homeVC
+    }
+    
+    func createMovieListViewController(with cateId: String, coordinator: MainCoordinator) -> UIViewController {
+        let viewModel = MovieListViewModel(category: cateId,
+                                           fetchMoviesUseCase: makeFetchMoviesByCategoryUseCase(),
+                                           coordinator: coordinator)
+        let vc = MovieListViewController.create(with: viewModel)
+        return vc
     }
     
     func createMovieDetailViewController(with movieId: Int, coordinator: MainCoordinator) -> UIViewController {
@@ -72,6 +81,10 @@ class DefaultMainComponentsFactory: MainComponentsFactory {
     
     private func makeFetchLatestMoviesUseCase() -> FetchLatestMoviesUseCase {
         DefaultFetchLatestMoviesUseCase(movieRepository: movieRepository)
+    }
+    
+    private func makeFetchMoviesByCategoryUseCase() -> FetchMoviesByCategoryUseCase {
+        DefaultFetchMoviesByCategoryUseCase(movieRepository: movieRepository)
     }
     
     private func makeFetchCastsUseCase() -> DefaultFetchCastsUseCase {

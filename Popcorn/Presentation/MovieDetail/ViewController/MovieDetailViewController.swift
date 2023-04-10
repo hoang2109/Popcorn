@@ -59,6 +59,7 @@ class MovieDetailViewController: UIViewController, StoryboardInstantiable {
         gradient.frame.size.height = posterView.frame.height
         gradient.frame.size.width = posterView.frame.width * 20
         posterView.layer.addSublayer(gradient)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
     }
     
     private func bind(to viewModel: MovieDetailViewModel) {

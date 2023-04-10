@@ -29,6 +29,10 @@ class DefaultMainCoordinator: MainCoordinator {
             let vc = componentsFactory.createHomeViewController(coordinator: self)
             navigationController.pushViewController(vc, animated: true)
             break
+        case .movieCategory(let cateId, let title):
+            let vc = componentsFactory.createMovieListViewController(with: cateId, coordinator: self)
+            vc.title = title
+            navigationController.pushViewController(vc, animated: true)
         case .movieDetail(let movieId):
             let vc = componentsFactory.createMovieDetailViewController(with: movieId, coordinator: self)
             navigationController.pushViewController(vc, animated: true)

@@ -14,6 +14,7 @@ protocol HomeViewModel {
     func viewDidLoad()
     func refreshMovies()
     func didSelectMovie(_ movieId: Int)
+    func didSelectMovieCategory(_ categoryId: String, _ title: String)
     
     // MARK: - Output
     var isRefreshing: Observable<Bool> { get }
@@ -27,10 +28,10 @@ class DefaultHomeViewModel: HomeViewModel {
     
     private var isRefreshingSubject = BehaviorSubject(value: false)
     private var moviesSectionsSubject = BehaviorSubject<[HomeSectionModel]>(value: [
-        .popularMovies([Movie]()),
-        .topRatedMovies([Movie]()),
-        .upcomingMovies([Movie]()),
-        .latestMovies([Movie]())
+        .popularMovies("popular", "Popular", [Movie]()),
+        .topRatedMovies("top_rated", "Top Rated", [Movie]()),
+        .upcomingMovies("upcoming", "Upcoming", [Movie]()),
+        .latestMovies("now_playing", "Latest", [Movie]())
     ])
     
     private let fetchPopularMoviesUseCase: FetchPopularMoviesUseCase
@@ -63,13 +64,13 @@ class DefaultHomeViewModel: HomeViewModel {
     func refreshMovies() {
         isRefreshingSubject.onNext(true)
         let popularMovies = fetchPopularMoviesUseCase.execute()
-            .map(HomeSectionModel.popularMovies)
+            .map { HomeSectionModel.popularMovies("popular", "Popular", $0) }
         let topRatedMovies = fetchTopRatedMoviesUseCase.execute()
-            .map(HomeSectionModel.topRatedMovies)
+            .map { HomeSectionModel.topRatedMovies("top_rated", "Top Rated", $0) }
         let upcomingMovies = fetchUpComingMoviesUseCase.execute()
-            .map(HomeSectionModel.upcomingMovies)
+            .map { HomeSectionModel.upcomingMovies("upcoming", "Upcoming", $0) }
         let latestMovies = fetchLatestMoviesUseCase.execute()
-            .map(HomeSectionModel.latestMovies)
+            .map { HomeSectionModel.latestMovies("now_playing", "Latest", $0) }
         
         Observable.merge([popularMovies, topRatedMovies, upcomingMovies, latestMovies])
             .map { [weak self] section in
@@ -94,6 +95,10 @@ class DefaultHomeViewModel: HomeViewModel {
     
     func didSelectMovie(_ movieId: Int) {
         coordinator.navigate(to: .movieDetail(movieId))
+    }
+    
+    func didSelectMovieCategory(_ categoryId: String, _ title: String) {
+        coordinator.navigate(to: .movieCategory(categoryId, title))
     }
 }
 
