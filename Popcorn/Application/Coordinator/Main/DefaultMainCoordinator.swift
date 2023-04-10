@@ -1,31 +1,19 @@
 //
-//  HomeCoordinator.swift
+//  DefaultMainCoordinator.swift
 //  Popcorn
 //
-//  Created by Hoang Nguyen on 9/4/23.
+//  Created by Hoang Nguyen on 10/4/23.
 //
 
 import Foundation
 import UIKit
 
-// MARK: - Steps
-public enum HomeStep: Step {
-    case home
-    case movieDetail(Int)
-    case actorDetail(Int)
-    case dismiss
-}
-
-protocol MainCoordinator: NavigationCoordinator {
-    func navigate(to step: HomeStep)
-}
-
-class DefaultHomeCoordinator: MainCoordinator {
+class DefaultMainCoordinator: MainCoordinator {
     
     let navigationController: UINavigationController
-    private let componentsFactory: HomeComponentsFactory
+    private let componentsFactory: MainComponentsFactory
     
-    init(navigationController: UINavigationController, componentsFactory: HomeComponentsFactory) {
+    init(navigationController: UINavigationController, componentsFactory: MainComponentsFactory) {
         self.navigationController = navigationController
         self.componentsFactory = componentsFactory
     }
@@ -35,7 +23,7 @@ class DefaultHomeCoordinator: MainCoordinator {
     }
     
     // MARK: - Navigation
-    func navigate(to step: HomeStep) {
+    func navigate(to step: MainStep) {
         switch step {
         case .home:
             let vc = componentsFactory.createHomeViewController(coordinator: self)

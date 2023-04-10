@@ -9,10 +9,6 @@ import Foundation
 import UIKit
 import RxSwift
 
-protocol MovieDetailViewControllerDelegate: AnyObject {
-    func didSelectActor(_ actorId: Int)
-}
-
 class MovieDetailViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var posterView: UIView!
@@ -27,14 +23,12 @@ class MovieDetailViewController: UIViewController, StoryboardInstantiable {
     private let loadingView = LoadingView(frame: .zero)
     
     private var viewModel : MovieDetailViewModel!
-    private weak var delegate: MovieDetailViewControllerDelegate?
     
     private var disposeBag = DisposeBag()
     
-    static func create(with viewModel: MovieDetailViewModel, _ delegate: MovieDetailViewControllerDelegate?) -> MovieDetailViewController {
+    static func create(with viewModel: MovieDetailViewModel) -> MovieDetailViewController {
         let controller = MovieDetailViewController.instantiateViewController()
         controller.viewModel = viewModel
-        controller.delegate = delegate
         return controller
     }
     
@@ -103,7 +97,7 @@ class MovieDetailViewController: UIViewController, StoryboardInstantiable {
         Observable
             .zip( castCollectionView.rx.itemSelected, castCollectionView.rx.modelSelected(Cast.self) )
             .bind { [weak self] (indexPath, item) in
-                self?.delegate?.didSelectActor(item.castId)
+                self?.viewModel.didSelectActor(item.castId)
             }
             .disposed(by: disposeBag)
     }

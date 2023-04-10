@@ -13,6 +13,7 @@ protocol HomeViewModel {
     // MARK: - Input
     func viewDidLoad()
     func refreshMovies()
+    func didSelectMovie(_ movieId: Int)
     
     // MARK: - Output
     var isRefreshing: Observable<Bool> { get }
@@ -32,21 +33,24 @@ class DefaultHomeViewModel: HomeViewModel {
         .latestMovies([Movie]())
     ])
     
-    private var fetchPopularMoviesUseCase: FetchPopularMoviesUseCase
-    private var fetchTopRatedMoviesUseCase: FetchTopRatedMoviesUseCase
-    private var fetchUpComingMoviesUseCase: FetchUpComingMoviesUseCase
-    private var fetchLatestMoviesUseCase: FetchLatestMoviesUseCase
+    private let fetchPopularMoviesUseCase: FetchPopularMoviesUseCase
+    private let fetchTopRatedMoviesUseCase: FetchTopRatedMoviesUseCase
+    private let fetchUpComingMoviesUseCase: FetchUpComingMoviesUseCase
+    private let fetchLatestMoviesUseCase: FetchLatestMoviesUseCase
+    private let coordinator: MainCoordinator
     
     private let disposeBag = DisposeBag()
     
     init(fetchPopularMoviesUseCase: FetchPopularMoviesUseCase,
          fetchTopRatedMoviesUseCase: FetchTopRatedMoviesUseCase,
          fetchUpComingMoviesUseCase: FetchUpComingMoviesUseCase,
-         fetchLatestMoviesUseCase: FetchLatestMoviesUseCase) {
+         fetchLatestMoviesUseCase: FetchLatestMoviesUseCase,
+         coordinator: MainCoordinator) {
         self.fetchPopularMoviesUseCase = fetchPopularMoviesUseCase
         self.fetchTopRatedMoviesUseCase = fetchTopRatedMoviesUseCase
         self.fetchUpComingMoviesUseCase = fetchUpComingMoviesUseCase
         self.fetchLatestMoviesUseCase = fetchLatestMoviesUseCase
+        self.coordinator = coordinator
         
         isRefreshing = isRefreshingSubject.asObservable()
         moviesSections = moviesSectionsSubject.asObservable()
@@ -86,6 +90,10 @@ class DefaultHomeViewModel: HomeViewModel {
                 self?.isRefreshingSubject.onNext(false)
             })
             .bind(to: moviesSectionsSubject).disposed(by: disposeBag)
+    }
+    
+    func didSelectMovie(_ movieId: Int) {
+        coordinator.navigate(to: .movieDetail(movieId))
     }
 }
 

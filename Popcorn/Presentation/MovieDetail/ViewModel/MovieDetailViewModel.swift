@@ -24,14 +24,16 @@ final class MovieDetailViewModel {
     private var movieInfoViewStateSubject = BehaviorSubject<ViewState<MovieDetailInfo>>(value: .loading)
     private var creditsViewStateSubject = BehaviorSubject<ViewState<Cast>>(value: .loading)
     private var videosViewStateSubject = BehaviorSubject<ViewState<VideoTrailer>>(value: .loading)
+    private var coordinator: MainCoordinator
     
     private var disposeBag = DisposeBag()
     
-    init(movieId: Int, fetchMovieDetailUseCase: FetchMovieDetailUseCase, fetchCreditsUseCase: FetchCreditsUseCase, fetchVideoTrailerUseCase: FetchVideoTrialersUseCase) {
+    init(movieId: Int, fetchMovieDetailUseCase: FetchMovieDetailUseCase, fetchCreditsUseCase: FetchCreditsUseCase, fetchVideoTrailerUseCase: FetchVideoTrialersUseCase, coordinator: MainCoordinator) {
         self.movieId = movieId
         self.fetchMovieDetailUseCase = fetchMovieDetailUseCase
         self.fetchCreditsUseCase = fetchCreditsUseCase
         self.fetchVideoTrailerUseCase = fetchVideoTrailerUseCase
+        self.coordinator = coordinator
         
         movieInfoViewState = movieInfoViewStateSubject.asObservable()
         creditsViewState = creditsViewStateSubject.asObservable()
@@ -81,6 +83,10 @@ final class MovieDetailViewModel {
         })
         .bind(to: videosViewStateSubject)
         .disposed(by: disposeBag)
+    }
+    
+    func didSelectActor(_ actorId: Int) {
+        coordinator.navigate(to: .actorDetail(actorId))
     }
 }
 

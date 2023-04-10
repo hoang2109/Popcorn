@@ -26,7 +26,9 @@ class AppCoordinator: Coordinator {
         let navigationController = UINavigationController()
         navigationController.navigationBar.barStyle = .black
         
-        let homeCoordinator = HomeCoordinator(navigationController: navigationController, dependencies: HomeCoordinator.Dependencies(networkService: appDIContainer.networkService))
+        let homeComponentsFactory = DefaultMainComponentsFactory(networkService: appDIContainer.networkService)
+        let homeCoordinator = DefaultMainCoordinator(navigationController: navigationController, componentsFactory: homeComponentsFactory)
+        
         childCoordinators[.main] = homeCoordinator
         homeCoordinator.start()
         
