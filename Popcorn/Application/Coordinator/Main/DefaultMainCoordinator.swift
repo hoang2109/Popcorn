@@ -12,6 +12,7 @@ class DefaultMainCoordinator: MainCoordinator {
     
     let navigationController: UINavigationController
     private let componentsFactory: MainComponentsFactory
+    private var childCoordinators = [UUID: Coordinator]()
     
     init(navigationController: UINavigationController, componentsFactory: MainComponentsFactory) {
         self.navigationController = navigationController
@@ -26,24 +27,34 @@ class DefaultMainCoordinator: MainCoordinator {
     func navigate(to step: MainStep) {
         switch step {
         case .home:
-            let vc = componentsFactory.createHomeViewController(coordinator: self)
-            navigationController.pushViewController(vc, animated: true)
+            navigateToHomeViewController()
             break
         case .movieCategory(let cateId, let title):
-            let vc = componentsFactory.createMovieListViewController(with: cateId, coordinator: self)
-            vc.title = title
-            navigationController.pushViewController(vc, animated: true)
+            navigateToMovieListController(cateId, title)
+            break
         case .movieDetail(let movieId):
-            let vc = componentsFactory.createMovieDetailViewController(with: movieId, coordinator: self)
-            navigationController.pushViewController(vc, animated: true)
-            break
-        case .actorDetail(let actorId):
-            let vc = componentsFactory.createActorDetailViewController(with: actorId, coordinator: self)
-            navigationController.present(vc, animated: true)
-            break
-        case .dismiss:
-            navigationController.dismiss(animated: true)
+            navigateToMovieDetailModule(movieId)
             break
         }
+    }
+    
+    private func navigateToHomeViewController() {
+        let vc = componentsFactory.createHomeViewController(coordinator: self)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    private func navigateToMovieListController(_ cateId: String, _ title: String) {
+        let vc = componentsFactory.createMovieListViewController(with: cateId, coordinator: self)
+        vc.title = title
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    private func navigateToMovieDetailModule(_ movieId: Int) {
+        let uuid = UUID()
+        let coordinator = componentsFactory.createMovieDetailCoordinator(navigationController: navigationController) { [weak self] in
+            self?.childCoordinators[uuid] = nil
+        }
+        childCoordinators[uuid] = coordinator
+        coordinator.navigate(to: .movieDetail(movieId))
     }
 }

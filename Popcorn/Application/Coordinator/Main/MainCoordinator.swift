@@ -12,8 +12,6 @@ public enum MainStep: Step {
     case home
     case movieCategory(String, String)
     case movieDetail(Int)
-    case actorDetail(Int)
-    case dismiss
 }
 
 protocol MainCoordinator: NavigationCoordinator {

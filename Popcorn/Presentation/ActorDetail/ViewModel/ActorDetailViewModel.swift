@@ -16,14 +16,14 @@ class ActorDetailViewModel {
     private let actorId: Int
     private let fetchActorDetailUseCase: FetchActorDetailUseCase
     private let fetchActorCreditsUseCase: FetchActorCreditsUseCase
-    private let coordinator: MainCoordinator
+    private let coordinator: MovieDetailCoordinator
     
     private let viewStateSubject = BehaviorSubject<ViewState<ActorDetail>>(value: .loading)
     private let creditsSubject = BehaviorSubject<[Movie]>(value: [])
     
     private let disposeBag = DisposeBag()
     
-    init(actorId: Int, fetchActorDetailUseCase: FetchActorDetailUseCase, fetchActorCreditsUseCase: FetchActorCreditsUseCase, coordinator: MainCoordinator) {
+    init(actorId: Int, fetchActorDetailUseCase: FetchActorDetailUseCase, fetchActorCreditsUseCase: FetchActorCreditsUseCase, coordinator: MovieDetailCoordinator) {
         self.actorId = actorId
         self.fetchActorDetailUseCase = fetchActorDetailUseCase
         self.fetchActorCreditsUseCase = fetchActorCreditsUseCase
@@ -57,7 +57,7 @@ class ActorDetailViewModel {
     }
     
     func didSelectMovie(_ movieId: Int) {
-        coordinator.navigate(to: .dismiss)
+        coordinator.navigate(to: .dismissActorDetail)
         coordinator.navigate(to: .movieDetail(movieId))
     }
 }

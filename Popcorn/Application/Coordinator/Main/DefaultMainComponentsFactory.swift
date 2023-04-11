@@ -18,12 +18,6 @@ class DefaultMainComponentsFactory: MainComponentsFactory {
     private lazy var creditRepository: CreditRepository = {
         return DefaultCreditRepository(networkService: networkService)
     }()
-    private lazy var videoTrailerRepository: VideoTrailerRepository = {
-        return DefaultVideoTrailerRepository(networkService: networkService)
-    }()
-    private lazy var actorRepository: ActorRepository = {
-        return DefaultActorRepository(networkService: networkService)
-    }()
     
     init(networkService: DataTransferService) {
         self.networkService = networkService
@@ -48,23 +42,11 @@ class DefaultMainComponentsFactory: MainComponentsFactory {
         return vc
     }
     
-    func createMovieDetailViewController(with movieId: Int, coordinator: MainCoordinator) -> UIViewController {
-        let viewModel = MovieDetailViewModel(movieId: movieId,
-                                             fetchMovieDetailUseCase: makeFetchMovieDetailUseCase(),
-                                             fetchCreditsUseCase: makeFetchCastsUseCase(),
-                                             fetchVideoTrailerUseCase: makeFetchVideoTrialersUseCase(),
-                                             coordinator: coordinator)
-        let vc = MovieDetailViewController.create(with: viewModel)
-        return vc
-    }
-    
-    func createActorDetailViewController(with actorId: Int, coordinator: MainCoordinator) -> UIViewController {
-        let viewModel = ActorDetailViewModel(actorId: actorId,
-                                             fetchActorDetailUseCase: makeFetchActorDetailUseCase(),
-                                             fetchActorCreditsUseCase: makeFetchActorCreditsUseCase(),
-                                             coordinator: coordinator)
-        let vc = ActorDetailViewController.create(with: viewModel)
-        return vc
+    func createMovieDetailCoordinator(navigationController: UINavigationController, completion: @escaping () -> Void) -> MovieDetailCoordinator {
+        let factory = DefaultMovieDetailComponentFactory(networkService: networkService)
+        let coordinator = DefaultMovieDetailCoordinator(navigationController: navigationController, componentFactory: factory)
+        coordinator.onFinish = completion
+        return coordinator
     }
     
     private func makeFetchPopularMoviesUseCase() -> FetchPopularMoviesUseCase {
@@ -85,25 +67,5 @@ class DefaultMainComponentsFactory: MainComponentsFactory {
     
     private func makeFetchMoviesByCategoryUseCase() -> FetchMoviesByCategoryUseCase {
         DefaultFetchMoviesByCategoryUseCase(movieRepository: movieRepository)
-    }
-    
-    private func makeFetchCastsUseCase() -> DefaultFetchCastsUseCase {
-        DefaultFetchCastsUseCase(creditRepository: creditRepository)
-    }
-    
-    private func makeFetchVideoTrialersUseCase() -> FetchVideoTrialersUseCase {
-        DefaultFetchVideoTrialersUseCase(videoTrailerRepository: videoTrailerRepository)
-    }
-    
-    private func makeFetchMovieDetailUseCase() -> FetchMovieDetailUseCase {
-        DefaultFetchMovieDetailUseCase(movieRepository: movieRepository)
-    }
-    
-    private func makeFetchActorDetailUseCase() -> FetchActorDetailUseCase {
-        DefaultFetchActorDetailUseCase(actorRepository: actorRepository)
-    }
-    
-    private func makeFetchActorCreditsUseCase() -> FetchActorCreditsUseCase {
-        DefaultFetchActorCreditsUseCase(actorRepository: actorRepository)
     }
 }

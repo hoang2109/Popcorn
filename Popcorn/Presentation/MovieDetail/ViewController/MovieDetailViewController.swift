@@ -47,7 +47,8 @@ class MovieDetailViewController: UIViewController, StoryboardInstantiable {
     }
     
     deinit {
-      print("deinit \(Self.self)")
+        viewModel.viewDidFinish()
+        print("deinit \(Self.self)")
     }
     
     private func configureViews() {
