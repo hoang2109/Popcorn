@@ -14,9 +14,13 @@ class DefaultMovieDetailCoordinator: MovieDetailCoordinator {
     var navigationController: UINavigationController
     private let componentFactory: MovieDetailComponentFactory
     
+    private var topViewController: UIViewController?
+    
     init(navigationController: UINavigationController, componentFactory: MovieDetailComponentFactory) {
         self.navigationController = navigationController
         self.componentFactory = componentFactory
+        
+        topViewController = navigationController.topViewController
     }
     
     deinit {
@@ -51,6 +55,9 @@ class DefaultMovieDetailCoordinator: MovieDetailCoordinator {
     }
     
     private func movieDetailCoordinatorDidFinish() {
-        onFinish?()
+        if topViewController == navigationController.topViewController {
+            onFinish?()
+            topViewController = nil
+        }
     }
 }

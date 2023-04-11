@@ -36,6 +36,10 @@
 		CE15583229E558DC00A8666A /* MovieDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15583129E558DC00A8666A /* MovieDetailComponentFactory.swift */; };
 		CE15583429E558F200A8666A /* DefaultMovieDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15583329E558F200A8666A /* DefaultMovieDetailCoordinator.swift */; };
 		CE15583629E5590D00A8666A /* DefaultMovieDetailComponentFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15583529E5590D00A8666A /* DefaultMovieDetailComponentFactory.swift */; };
+		CE15583A29E5632D00A8666A /* MovieDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15583929E5632D00A8666A /* MovieDetailModuleFactory.swift */; };
+		CE15583C29E5640600A8666A /* DefaultMovieDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15583B29E5640600A8666A /* DefaultMovieDetailModuleFactory.swift */; };
+		CE15583E29E571D400A8666A /* MainModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15583D29E571D400A8666A /* MainModuleFactory.swift */; };
+		CE15584029E5725300A8666A /* DefaultMainModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15583F29E5725300A8666A /* DefaultMainModuleFactory.swift */; };
 		CEA2D0D229D9349E00668907 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D0D129D9349E00668907 /* AppDelegate.swift */; };
 		CEA2D0D429D9349E00668907 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D0D329D9349E00668907 /* SceneDelegate.swift */; };
 		CEA2D0DB29D9349E00668907 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA2D0DA29D9349E00668907 /* Assets.xcassets */; };
@@ -147,6 +151,10 @@
 		CE15583129E558DC00A8666A /* MovieDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailComponentFactory.swift; sourceTree = "<group>"; };
 		CE15583329E558F200A8666A /* DefaultMovieDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMovieDetailCoordinator.swift; sourceTree = "<group>"; };
 		CE15583529E5590D00A8666A /* DefaultMovieDetailComponentFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMovieDetailComponentFactory.swift; sourceTree = "<group>"; };
+		CE15583929E5632D00A8666A /* MovieDetailModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModuleFactory.swift; sourceTree = "<group>"; };
+		CE15583B29E5640600A8666A /* DefaultMovieDetailModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMovieDetailModuleFactory.swift; sourceTree = "<group>"; };
+		CE15583D29E571D400A8666A /* MainModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleFactory.swift; sourceTree = "<group>"; };
+		CE15583F29E5725300A8666A /* DefaultMainModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMainModuleFactory.swift; sourceTree = "<group>"; };
 		CEA2D0CE29D9349E00668907 /* Popcorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popcorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA2D0D129D9349E00668907 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA2D0D329D9349E00668907 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -349,7 +357,9 @@
 		CE15582729E40D5800A8666A /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				CE15583D29E571D400A8666A /* MainModuleFactory.swift */,
 				CE15581729E29E5100A8666A /* MainCoordinator.swift */,
+				CE15583F29E5725300A8666A /* DefaultMainModuleFactory.swift */,
 				CE15582529E4019900A8666A /* MainComponentsFactory.swift */,
 				CE15582829E40DF200A8666A /* DefaultMainCoordinator.swift */,
 				CE15582A29E40E1200A8666A /* DefaultMainComponentsFactory.swift */,
@@ -380,6 +390,8 @@
 				CE15583129E558DC00A8666A /* MovieDetailComponentFactory.swift */,
 				CE15583329E558F200A8666A /* DefaultMovieDetailCoordinator.swift */,
 				CE15583529E5590D00A8666A /* DefaultMovieDetailComponentFactory.swift */,
+				CE15583929E5632D00A8666A /* MovieDetailModuleFactory.swift */,
+				CE15583B29E5640600A8666A /* DefaultMovieDetailModuleFactory.swift */,
 			);
 			path = MovieDetail;
 			sourceTree = "<group>";
@@ -909,6 +921,7 @@
 				CEA2D18629DACA5200668907 /* FetchCreditsUseCase.swift in Sources */,
 				CE15580B29E14F9B00A8666A /* FetchActorCreditsUseCase.swift in Sources */,
 				CEA2D1B529DDAFE800668907 /* SearchMovieViewModel.swift in Sources */,
+				CE15583A29E5632D00A8666A /* MovieDetailModuleFactory.swift in Sources */,
 				CEA2D18A29DACB3900668907 /* CreditRepository.swift in Sources */,
 				CEA2D16329DAA44800668907 /* AppConfiguration.swift in Sources */,
 				CEA2D19F29DAE5C300668907 /* MovieDetail.swift in Sources */,
@@ -926,7 +939,9 @@
 				CEA2D18029DABCFC00668907 /* TrailerCollectionViewCell.swift in Sources */,
 				CEA2D14929D9B39100668907 /* MovieRepository.swift in Sources */,
 				CEA2D1AC29DDABB300668907 /* SearchMovieViewController.swift in Sources */,
+				CE15584029E5725300A8666A /* DefaultMainModuleFactory.swift in Sources */,
 				CEA2D0D229D9349E00668907 /* AppDelegate.swift in Sources */,
+				CE15583C29E5640600A8666A /* DefaultMovieDetailModuleFactory.swift in Sources */,
 				CEA2D0D429D9349E00668907 /* SceneDelegate.swift in Sources */,
 				CE15582B29E40E1200A8666A /* DefaultMainComponentsFactory.swift in Sources */,
 				CEA2D11629D945D200668907 /* HomeViewController.swift in Sources */,
@@ -968,6 +983,7 @@
 				CE15580329E14C8100A8666A /* FetchActorDetailUseCase.swift in Sources */,
 				CEA2D11F29D949FF00668907 /* PopularCell.swift in Sources */,
 				CEA2D1B929DE99D200668907 /* MoviesResultViewController.swift in Sources */,
+				CE15583E29E571D400A8666A /* MainModuleFactory.swift in Sources */,
 				CE1557E229DECC4D00A8666A /* MovieListViewModel.swift in Sources */,
 				CE15580129E14C0B00A8666A /* ActorDetail.swift in Sources */,
 			);

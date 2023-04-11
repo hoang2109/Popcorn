@@ -11,5 +11,4 @@ import UIKit
 protocol MainComponentsFactory {
     func createHomeViewController(coordinator: MainCoordinator) -> UIViewController
     func createMovieListViewController(with cateId: String, coordinator: MainCoordinator) -> UIViewController
-    func createMovieDetailCoordinator(navigationController: UINavigationController, completion: @escaping () -> Void) -> MovieDetailCoordinator
 }

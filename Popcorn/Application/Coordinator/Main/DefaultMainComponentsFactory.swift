@@ -42,13 +42,6 @@ class DefaultMainComponentsFactory: MainComponentsFactory {
         return vc
     }
     
-    func createMovieDetailCoordinator(navigationController: UINavigationController, completion: @escaping () -> Void) -> MovieDetailCoordinator {
-        let factory = DefaultMovieDetailComponentFactory(networkService: networkService)
-        let coordinator = DefaultMovieDetailCoordinator(navigationController: navigationController, componentFactory: factory)
-        coordinator.onFinish = completion
-        return coordinator
-    }
-    
     private func makeFetchPopularMoviesUseCase() -> FetchPopularMoviesUseCase {
         DefaultFetchPopularMoviesUseCase(movieRepository: movieRepository)
     }

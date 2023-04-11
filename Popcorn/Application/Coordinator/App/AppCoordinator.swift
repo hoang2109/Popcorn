@@ -15,19 +15,18 @@ public enum AppChildCoordinator {
 class AppCoordinator: Coordinator {
     private let window: UIWindow
     private var childCoordinators = [AppChildCoordinator: Coordinator]()
-    private let appDIContainer: AppDIContainer
+    private let mainModuleFactory: MainModuleFactory
     
-    init(window: UIWindow, appDIContainer: AppDIContainer) {
+    init(window: UIWindow, mainModuleFactory: MainModuleFactory) {
         self.window = window
-        self.appDIContainer = appDIContainer
+        self.mainModuleFactory = mainModuleFactory
     }
     
     func start() {
         let navigationController = UINavigationController()
         navigationController.navigationBar.barStyle = .black
         
-        let homeComponentsFactory = DefaultMainComponentsFactory(networkService: appDIContainer.networkService)
-        let homeCoordinator = DefaultMainCoordinator(navigationController: navigationController, componentsFactory: homeComponentsFactory)
+        let homeCoordinator = mainModuleFactory.createMainCoordinator(navigationController: navigationController)
         
         childCoordinators[.main] = homeCoordinator
         homeCoordinator.start()
