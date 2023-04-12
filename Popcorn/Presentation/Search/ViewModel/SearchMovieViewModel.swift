@@ -14,14 +14,16 @@ class SearchMovieViewModel {
     
     private let fetchDiscoveryMovieUseCase: FetchDiscoverMoviesUseCase
     private let searchMoviesUseCase: SearchMoviesUseCase
+    private let coordinator: SearchMovieCoordinator
     private let discoverMoviesViewStateSubject: BehaviorSubject<ViewState<Movie>> = BehaviorSubject(value: .loading)
     private let searchResultViewStateSubject: BehaviorSubject<ViewState<Movie>> = .init(value: .loaded([]))
     
     private let disposeBag = DisposeBag()
     
-    init(fetchDiscoveryMovieUseCase: FetchDiscoverMoviesUseCase, searchMoviesUseCase: SearchMoviesUseCase) {
+    init(fetchDiscoveryMovieUseCase: FetchDiscoverMoviesUseCase, searchMoviesUseCase: SearchMoviesUseCase, coordinator: SearchMovieCoordinator) {
         self.fetchDiscoveryMovieUseCase = fetchDiscoveryMovieUseCase
         self.searchMoviesUseCase = searchMoviesUseCase
+        self.coordinator = coordinator
         
         discoverMoviesViewState = discoverMoviesViewStateSubject.asObservable()
         searchResultViewState = searchResultViewStateSubject.asObservable()
@@ -64,5 +66,9 @@ class SearchMovieViewModel {
     
     func clearSearchResult() {
         searchResultViewStateSubject.onNext(.loaded([]))
+    }
+    
+    func didSelectMovie(_ movieId: Int) {
+        coordinator.navigate(to: .detail(movieId))
     }
 }

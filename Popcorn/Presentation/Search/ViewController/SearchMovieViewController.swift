@@ -8,24 +8,18 @@
 import UIKit
 import RxSwift
 
-protocol SearchMovieViewControllerDelegate: AnyObject {
-    func didSelectMovie(_ movieId: Int)
-}
-
 class SearchMovieViewController: UIViewController, StoryboardInstantiable {
     
     @IBOutlet weak var discoveryMoviesTableView: UITableView!
     private var searchController: UISearchController!
     
     private var viewModel: SearchMovieViewModel!
-    private weak var delegate: SearchMovieViewControllerDelegate?
     
     private let disposeBag = DisposeBag()
     
-    static func create(with viewModel: SearchMovieViewModel, _ delegate: SearchMovieViewControllerDelegate?) -> SearchMovieViewController {
+    static func create(with viewModel: SearchMovieViewModel) -> SearchMovieViewController {
         let controller = SearchMovieViewController.instantiateViewController()
         controller.viewModel = viewModel
-        controller.delegate = delegate
         return controller
     }
     
@@ -58,7 +52,7 @@ class SearchMovieViewController: UIViewController, StoryboardInstantiable {
     private func configureSearchBarController() {
         let resultsController = MoviesResultViewController(viewModel: viewModel)
         resultsController.onSelect = { [weak self] in
-            self?.delegate?.didSelectMovie($0)
+            self?.viewModel.didSelectMovie($0)
         }
         searchController = UISearchController(searchResultsController: resultsController)
         searchController.searchBar.placeholder = "Search for a movie"
@@ -100,7 +94,7 @@ class SearchMovieViewController: UIViewController, StoryboardInstantiable {
         Observable
           .zip( discoveryMoviesTableView.rx.itemSelected, discoveryMoviesTableView.rx.modelSelected(Movie.self) )
           .bind { [weak self] (indexPath, item) in
-              self?.delegate?.didSelectMovie(item.id)
+              self?.viewModel.didSelectMovie(item.id)
         }
         .disposed(by: disposeBag)
     }

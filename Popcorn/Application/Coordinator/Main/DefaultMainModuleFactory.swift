@@ -10,18 +10,18 @@ import UIKit
 
 class DefaultMainModuleFactory: MainModuleFactory {
     
-    private let networkService: DataTransferService
+    private let mainComponentsFactory: MainComponentsFactory
+    private let movieDetailModuleFactory: MovieDetailModuleFactory
     
-    init(networkService: DataTransferService) {
-        self.networkService = networkService
+    init(mainComponentsFactory: MainComponentsFactory, movieDetailModuleFactory: MovieDetailModuleFactory) {
+        self.mainComponentsFactory = mainComponentsFactory
+        self.movieDetailModuleFactory = movieDetailModuleFactory
     }
     
     func createMainCoordinator(navigationController: UINavigationController) -> MainCoordinator {
-        let homeComponentsFactory = DefaultMainComponentsFactory(networkService: networkService)
-        let detailModuleFactory = DefaultMovieDetailModuleFactory(networkService: networkService)
         let homeCoordinator = DefaultMainCoordinator(navigationController: navigationController,
-                                                     componentsFactory: homeComponentsFactory,
-                                                     movieDetailModuleFactory: detailModuleFactory
+                                                     componentsFactory: mainComponentsFactory,
+                                                     movieDetailModuleFactory: movieDetailModuleFactory
         )
         return homeCoordinator
     }

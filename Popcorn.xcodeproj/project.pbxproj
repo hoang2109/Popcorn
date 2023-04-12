@@ -40,6 +40,12 @@
 		CE15583C29E5640600A8666A /* DefaultMovieDetailModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15583B29E5640600A8666A /* DefaultMovieDetailModuleFactory.swift */; };
 		CE15583E29E571D400A8666A /* MainModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15583D29E571D400A8666A /* MainModuleFactory.swift */; };
 		CE15584029E5725300A8666A /* DefaultMainModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15583F29E5725300A8666A /* DefaultMainModuleFactory.swift */; };
+		CE15584329E68E2600A8666A /* SearchMovieCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15584229E68E2600A8666A /* SearchMovieCoordinator.swift */; };
+		CE15584529E68E8200A8666A /* DefaultSearchMovieCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15584429E68E8200A8666A /* DefaultSearchMovieCoordinator.swift */; };
+		CE15584729E6904600A8666A /* DefaultSearchMovieComponentsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15584629E6904600A8666A /* DefaultSearchMovieComponentsFactory.swift */; };
+		CE15584929E6923400A8666A /* SearchModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15584829E6923400A8666A /* SearchModuleFactory.swift */; };
+		CE15584B29E6925C00A8666A /* DefaultSearchModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15584A29E6925C00A8666A /* DefaultSearchModuleFactory.swift */; };
+		CE15584D29E6961D00A8666A /* SearchMovieComponentsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15584C29E6961D00A8666A /* SearchMovieComponentsFactory.swift */; };
 		CEA2D0D229D9349E00668907 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D0D129D9349E00668907 /* AppDelegate.swift */; };
 		CEA2D0D429D9349E00668907 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA2D0D329D9349E00668907 /* SceneDelegate.swift */; };
 		CEA2D0DB29D9349E00668907 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEA2D0DA29D9349E00668907 /* Assets.xcassets */; };
@@ -155,6 +161,12 @@
 		CE15583B29E5640600A8666A /* DefaultMovieDetailModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMovieDetailModuleFactory.swift; sourceTree = "<group>"; };
 		CE15583D29E571D400A8666A /* MainModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleFactory.swift; sourceTree = "<group>"; };
 		CE15583F29E5725300A8666A /* DefaultMainModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMainModuleFactory.swift; sourceTree = "<group>"; };
+		CE15584229E68E2600A8666A /* SearchMovieCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieCoordinator.swift; sourceTree = "<group>"; };
+		CE15584429E68E8200A8666A /* DefaultSearchMovieCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchMovieCoordinator.swift; sourceTree = "<group>"; };
+		CE15584629E6904600A8666A /* DefaultSearchMovieComponentsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchMovieComponentsFactory.swift; sourceTree = "<group>"; };
+		CE15584829E6923400A8666A /* SearchModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleFactory.swift; sourceTree = "<group>"; };
+		CE15584A29E6925C00A8666A /* DefaultSearchModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSearchModuleFactory.swift; sourceTree = "<group>"; };
+		CE15584C29E6961D00A8666A /* SearchMovieComponentsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieComponentsFactory.swift; sourceTree = "<group>"; };
 		CEA2D0CE29D9349E00668907 /* Popcorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popcorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA2D0D129D9349E00668907 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA2D0D329D9349E00668907 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -346,6 +358,7 @@
 		CE15582429E2B1D000A8666A /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
+				CE15584129E68E1800A8666A /* Search */,
 				CE15582E29E5567000A8666A /* MovieDetail */,
 				CE15582C29E40E4A00A8666A /* Shared */,
 				CE15582D29E40E5200A8666A /* App */,
@@ -394,6 +407,19 @@
 				CE15583B29E5640600A8666A /* DefaultMovieDetailModuleFactory.swift */,
 			);
 			path = MovieDetail;
+			sourceTree = "<group>";
+		};
+		CE15584129E68E1800A8666A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				CE15584229E68E2600A8666A /* SearchMovieCoordinator.swift */,
+				CE15584429E68E8200A8666A /* DefaultSearchMovieCoordinator.swift */,
+				CE15584629E6904600A8666A /* DefaultSearchMovieComponentsFactory.swift */,
+				CE15584829E6923400A8666A /* SearchModuleFactory.swift */,
+				CE15584A29E6925C00A8666A /* DefaultSearchModuleFactory.swift */,
+				CE15584C29E6961D00A8666A /* SearchMovieComponentsFactory.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		CEA2D0C529D9349E00668907 = {
@@ -902,6 +928,7 @@
 				CEA2D15F29D9D28200668907 /* EndPoint.swift in Sources */,
 				CEA2D1BB29DEA1C700668907 /* SearchMoviesUseCase.swift in Sources */,
 				CEA2D19729DAD8F900668907 /* VideoTrailerResponse.swift in Sources */,
+				CE15584929E6923400A8666A /* SearchModuleFactory.swift in Sources */,
 				CEA2D15529D9BCF600668907 /* UIImageView+Ext.swift in Sources */,
 				CE15580929E14DB300A8666A /* ActorDetailResponse.swift in Sources */,
 				CE1557F629E1475600A8666A /* ActorDetailViewController.swift in Sources */,
@@ -911,6 +938,7 @@
 				CE1557E029DECC2C00A8666A /* MovieListViewController.swift in Sources */,
 				CEA2D12129D94C6100668907 /* TopRatedCell.swift in Sources */,
 				CEA2D1B729DDB0F000668907 /* FetchDiscoverMoviesUseCase.swift in Sources */,
+				CE15584529E68E8200A8666A /* DefaultSearchMovieCoordinator.swift in Sources */,
 				CEA2D1A129DAE94700668907 /* MovieDetailResponse.swift in Sources */,
 				CE15583629E5590D00A8666A /* DefaultMovieDetailComponentFactory.swift in Sources */,
 				CEA2D18E29DACBAD00668907 /* DefaultCreditRepository.swift in Sources */,
@@ -923,10 +951,13 @@
 				CEA2D1B529DDAFE800668907 /* SearchMovieViewModel.swift in Sources */,
 				CE15583A29E5632D00A8666A /* MovieDetailModuleFactory.swift in Sources */,
 				CEA2D18A29DACB3900668907 /* CreditRepository.swift in Sources */,
+				CE15584729E6904600A8666A /* DefaultSearchMovieComponentsFactory.swift in Sources */,
 				CEA2D16329DAA44800668907 /* AppConfiguration.swift in Sources */,
 				CEA2D19F29DAE5C300668907 /* MovieDetail.swift in Sources */,
 				CEA2D16529DAA53500668907 /* NetworkConfiguration.swift in Sources */,
+				CE15584329E68E2600A8666A /* SearchMovieCoordinator.swift in Sources */,
 				CEA2D19D29DAE57F00668907 /* FetchMovieDetailUseCase.swift in Sources */,
+				CE15584D29E6961D00A8666A /* SearchMovieComponentsFactory.swift in Sources */,
 				CEA2D18C29DACB7F00668907 /* VideoTrailerRepository.swift in Sources */,
 				CE15581229E2984300A8666A /* AppCoordinator.swift in Sources */,
 				CEA2D15729D9BD7F00668907 /* HomeCollectionViewLayout.swift in Sources */,
@@ -954,6 +985,7 @@
 				CE15581829E29E5100A8666A /* MainCoordinator.swift in Sources */,
 				CEA2D19929DAD95700668907 /* VideoTrailer.swift in Sources */,
 				CE15582929E40DF200A8666A /* DefaultMainCoordinator.swift in Sources */,
+				CE15584B29E6925C00A8666A /* DefaultSearchModuleFactory.swift in Sources */,
 				CE15583029E5567D00A8666A /* MovieDetailCoordinator.swift in Sources */,
 				CE15580D29E1578F00A8666A /* ActorCreditsResponse.swift in Sources */,
 				CEA2D17929DABA9100668907 /* MovieDetailViewController.swift in Sources */,

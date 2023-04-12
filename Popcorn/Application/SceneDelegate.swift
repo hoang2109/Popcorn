@@ -21,7 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         appDIContainer = AppDIContainer(appConfiguration: DefaultAppConfiguration())
         
-        appCoordinator = AppCoordinator(window: window!, mainModuleFactory: DefaultMainModuleFactory(networkService: appDIContainer.networkService))
+        appCoordinator = AppCoordinator(window: window!,
+                                        mainModuleFactory: appDIContainer.createMainModuleFactory(),
+                                        searchModuleFactory: appDIContainer.createSearchModuleFactory())
         appCoordinator.start()
     }
 }

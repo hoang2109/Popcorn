@@ -42,6 +42,7 @@ class DefaultMovieDetailCoordinator: MovieDetailCoordinator {
     
     private func navigateToMovieDetail(_ movieId: Int) {
         let vc = componentFactory.createMovieDetailViewController(with: movieId, coordinator: self)
+        vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(vc, animated: true)
     }
     

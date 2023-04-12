@@ -10,15 +10,14 @@ import UIKit
 
 class DefaultMovieDetailModuleFactory: MovieDetailModuleFactory {
     
-    private let networkService: DataTransferService
+    private let movieDetailComponentFactory: MovieDetailComponentFactory
     
-    init(networkService: DataTransferService) {
-        self.networkService = networkService
+    init(movieDetailComponentFactory: MovieDetailComponentFactory) {
+        self.movieDetailComponentFactory = movieDetailComponentFactory
     }
     
     func createMovieDetailCoordinator(navigationController: UINavigationController, completion: @escaping () -> Void) -> MovieDetailCoordinator {
-        let factory = DefaultMovieDetailComponentFactory(networkService: networkService)
-        let coordinator = DefaultMovieDetailCoordinator(navigationController: navigationController, componentFactory: factory)
+        let coordinator = DefaultMovieDetailCoordinator(navigationController: navigationController, componentFactory: movieDetailComponentFactory)
         coordinator.onFinish = completion
         return coordinator
     }
