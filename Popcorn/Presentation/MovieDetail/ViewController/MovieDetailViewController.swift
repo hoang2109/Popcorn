@@ -99,7 +99,7 @@ class MovieDetailViewController: UIViewController, StoryboardInstantiable {
         Observable
             .zip( castCollectionView.rx.itemSelected, castCollectionView.rx.modelSelected(Cast.self) )
             .bind { [weak self] (indexPath, item) in
-                self?.viewModel.didSelectActor(item.castId)
+                self?.viewModel.didSelectActor(item.id)
             }
             .disposed(by: disposeBag)
     }
