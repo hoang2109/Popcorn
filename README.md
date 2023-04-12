@@ -31,10 +31,5 @@ Currently, the app is monolithic app. The problem is when app grows, there will 
 
 ## Screenshots
 
-![Simulator Screenshot - iPhone 14 Pro - 2023-04-12 at 17 26 17](https://user-images.githubusercontent.com/1131493/231416539-ea2087a2-5f51-411c-9e9d-84541e8590f5.png)
-![Simulator Screenshot - iPhone 14 Pro - 2023-04-12 at 17 26 23](https://user-images.githubusercontent.com/1131493/231416596-b5d6385c-c299-4e19-8917-45a39029f4d9.png)
-![Simulator Screenshot - iPhone 14 Pro - 2023-04-12 at 17 26 26](https://user-images.githubusercontent.com/1131493/231416608-625008c1-c5e9-4ba3-b5b1-d921e05ed250.png)
-![Simulator Screenshot - iPhone 14 Pro - 2023-04-12 at 17 26 33](https://user-images.githubusercontent.com/1131493/231416616-c399f695-0ab8-413d-85dc-874f2e138157.png)
-![Simulator Screenshot - iPhone 14 Pro - 2023-04-12 at 17 27 12](https://user-images.githubusercontent.com/1131493/231416687-51ad9904-5bdc-41e0-b3c7-46bd9e466507.png)
-![Simulator Screenshot - iPhone 14 Pro - 2023-04-12 at 17 26 40](https://user-images.githubusercontent.com/1131493/231416742-ed005fbb-57c8-4e75-9c8c-b1dace31bc2e.png)
-![Simulator Screenshot - iPhone 14 Pro - 2023-04-12 at 17 26 58](https://user-images.githubusercontent.com/1131493/231416769-9f4903fd-4e86-4823-ba3d-cde7699e1a96.png)
+<img width="200" src="https://user-images.githubusercontent.com/1131493/231416539-ea2087a2-5f51-411c-9e9d-84541e8590f5.png"> <img width="200" src="https://user-images.githubusercontent.com/1131493/231416596-b5d6385c-c299-4e19-8917-45a39029f4d9.png"> <img width="200" src="https://user-images.githubusercontent.com/1131493/231416608-625008c1-c5e9-4ba3-b5b1-d921e05ed250.png"> <img width="200" src="https://user-images.githubusercontent.com/1131493/231416616-c399f695-0ab8-413d-85dc-874f2e138157.png">
+<img width="200" src="https://user-images.githubusercontent.com/1131493/231416687-51ad9904-5bdc-41e0-b3c7-46bd9e466507.png"> <img width="200" src="https://user-images.githubusercontent.com/1131493/231416742-ed005fbb-57c8-4e75-9c8c-b1dace31bc2e.png"> <img width="200" src="https://user-images.githubusercontent.com/1131493/231416769-9f4903fd-4e86-4823-ba3d-cde7699e1a96.png">
