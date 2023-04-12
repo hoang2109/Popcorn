@@ -8,5 +8,5 @@
 import UIKit
 
 protocol MovieDetailModuleFactory {
-    func createMovieDetailCoordinator(navigationController: UINavigationController, completion: @escaping () -> Void) -> MovieDetailCoordinator
+    func createMovieDetailCoordinator(movieId: Int?, navigationController: UINavigationController, completion: @escaping () -> Void) -> Coordinator
 }

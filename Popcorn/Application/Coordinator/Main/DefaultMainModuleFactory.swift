@@ -18,7 +18,7 @@ class DefaultMainModuleFactory: MainModuleFactory {
         self.movieDetailModuleFactory = movieDetailModuleFactory
     }
     
-    func createMainCoordinator(navigationController: UINavigationController) -> MainCoordinator {
+    func createMainCoordinator(navigationController: UINavigationController) -> Coordinator {
         let homeCoordinator = DefaultMainCoordinator(navigationController: navigationController,
                                                      componentsFactory: mainComponentsFactory,
                                                      movieDetailModuleFactory: movieDetailModuleFactory

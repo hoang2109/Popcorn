@@ -13,10 +13,12 @@ class DefaultMovieDetailCoordinator: MovieDetailCoordinator {
     
     var navigationController: UINavigationController
     private let componentFactory: MovieDetailComponentFactory
+    private var movieId: Int?
     
     private var topViewController: UIViewController?
     
-    init(navigationController: UINavigationController, componentFactory: MovieDetailComponentFactory) {
+    init(movieId: Int? = nil, navigationController: UINavigationController, componentFactory: MovieDetailComponentFactory) {
+        self.movieId = movieId
         self.navigationController = navigationController
         self.componentFactory = componentFactory
         
@@ -25,6 +27,12 @@ class DefaultMovieDetailCoordinator: MovieDetailCoordinator {
     
     deinit {
         print("deinit \(Self.self)")
+    }
+    
+    func start() {
+        if let movieId = movieId {
+            navigate(to: .movieDetail(movieId))
+        }
     }
     
     func navigate(to step: MovieDetailStep) {

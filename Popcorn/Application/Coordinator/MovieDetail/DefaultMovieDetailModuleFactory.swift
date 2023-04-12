@@ -16,8 +16,8 @@ class DefaultMovieDetailModuleFactory: MovieDetailModuleFactory {
         self.movieDetailComponentFactory = movieDetailComponentFactory
     }
     
-    func createMovieDetailCoordinator(navigationController: UINavigationController, completion: @escaping () -> Void) -> MovieDetailCoordinator {
-        let coordinator = DefaultMovieDetailCoordinator(navigationController: navigationController, componentFactory: movieDetailComponentFactory)
+    func createMovieDetailCoordinator(movieId: Int?, navigationController: UINavigationController, completion: @escaping () -> Void) -> Coordinator {
+        let coordinator = DefaultMovieDetailCoordinator(movieId: movieId, navigationController: navigationController, componentFactory: movieDetailComponentFactory)
         coordinator.onFinish = completion
         return coordinator
     }

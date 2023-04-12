@@ -41,10 +41,10 @@ class DefaultSearchMovieCoordinator: SearchMovieCoordinator {
     
     private func navigateToMovieDetail(_ movieId: Int) {
         let uuid = UUID()
-        let coordinator = movieDetailModuleFactory.createMovieDetailCoordinator(navigationController: navigationController) { [weak self] in
+        let coordinator = movieDetailModuleFactory.createMovieDetailCoordinator(movieId: movieId, navigationController: navigationController) { [weak self] in
             self?.childCoordinators[uuid] = nil
         }
         childCoordinators[uuid] = coordinator
-        coordinator.navigate(to: .movieDetail(movieId))
+        coordinator.start()
     }
 }

@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 protocol SearchModuleFactory {
-    func createSearchMovieCoordinator(navigationController: UINavigationController) -> SearchMovieCoordinator
+    func createSearchMovieCoordinator(navigationController: UINavigationController) -> Coordinator
 }

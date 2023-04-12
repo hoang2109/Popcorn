@@ -9,5 +9,5 @@ import Foundation
 import UIKit
 
 protocol MainModuleFactory {
-    func createMainCoordinator(navigationController: UINavigationController) -> MainCoordinator
+    func createMainCoordinator(navigationController: UINavigationController) -> Coordinator
 }
