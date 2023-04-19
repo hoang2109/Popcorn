@@ -19,17 +19,16 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../../Networking/Networking"),
+        .package(path: "../../SharedLib/Common"),
         .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.0.0")),
-        
         .package(url: "https://github.com/RxSwiftCommunity/RxDataSources.git", .upToNextMajor(from: "5.0.0")),
-        .package(url: "https://github.com/Alamofire/AlamofireImage.git", .upToNextMajor(from: "4.0.0"))
     ],
     targets: [
         .target(
             name: "MovieDetailInterface",
-            dependencies: []),
+            dependencies: ["Common"]),
         .target(
             name: "MovieDetailFeature",
-            dependencies: ["Networking", "RxSwift", "RxDataSources", "AlamofireImage", "MovieDetailInterface"]),
+            dependencies: ["Networking", "RxSwift", "RxDataSources", "MovieDetailInterface", "Common"]),
     ]
 )

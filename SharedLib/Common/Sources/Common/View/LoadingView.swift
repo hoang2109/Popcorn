@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoadingView: UIView {
+public class LoadingView: UIView {
     
     let activityIndicator = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -15,7 +15,7 @@ class LoadingView: UIView {
         return activityIndicator
     }()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }

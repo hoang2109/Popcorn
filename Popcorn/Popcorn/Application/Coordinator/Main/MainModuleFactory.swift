@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Common
 
 protocol MainModuleFactory {
     func createMainCoordinator(navigationController: UINavigationController) -> Coordinator

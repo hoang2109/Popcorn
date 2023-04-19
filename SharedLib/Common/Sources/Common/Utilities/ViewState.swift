@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ViewState<Entity> {
+public enum ViewState<Entity> {
     
     case loading
     case paging([Entity], next: Int)
@@ -15,7 +15,7 @@ enum ViewState<Entity> {
     case empty
     case error(String)
     
-    var currentEntities: [Entity] {
+    public var currentEntities: [Entity] {
         switch self {
         case .loaded(let entities):
             return entities
@@ -26,7 +26,7 @@ enum ViewState<Entity> {
         }
     }
     
-    var currentPage: Int {
+    public var currentPage: Int {
         switch self {
         case .loading, .loaded, .empty, .error:
             return 1
@@ -35,7 +35,7 @@ enum ViewState<Entity> {
         }
     }
     
-    var isInitialPage: Bool {
+    public var isInitialPage: Bool {
         return currentPage == 1
     }
 }

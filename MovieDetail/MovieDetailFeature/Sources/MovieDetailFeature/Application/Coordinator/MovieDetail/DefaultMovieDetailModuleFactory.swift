@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import MovieDetailInterface
+import Common
 
 public class DefaultMovieDetailModuleFactory: MovieDetailModuleFactory {
     

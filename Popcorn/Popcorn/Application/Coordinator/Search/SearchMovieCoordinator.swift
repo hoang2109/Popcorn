@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Common
 
 enum SearchMovieStep: Step {
     case search

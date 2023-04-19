@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE40489B29F0206600124C76 /* MovieDetailInterface in Frameworks */ = {isa = PBXBuildFile; productRef = CE40489A29F0206600124C76 /* MovieDetailInterface */; };
+		CE40491629F02BC600124C76 /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = CE40491529F02BC600124C76 /* Common */; };
 		CE9E6C4D29EFF9DE0047B91B /* MovieDetailFeature in Frameworks */ = {isa = PBXBuildFile; productRef = CE9E6C4C29EFF9DE0047B91B /* MovieDetailFeature */; };
 		CEFF5C3129EFF5B8005D0097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF5C3029EFF5B8005D0097 /* AppDelegate.swift */; };
 		CEFF5C3329EFF5B8005D0097 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF5C3229EFF5B8005D0097 /* SceneDelegate.swift */; };
@@ -17,7 +18,6 @@
 		CEFF5C3D29EFF5B8005D0097 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEFF5C3B29EFF5B8005D0097 /* LaunchScreen.storyboard */; };
 		CEFF5C4429EFF5CB005D0097 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = CEFF5C4329EFF5CB005D0097 /* Networking */; };
 		CEFF5C4629EFF5CB005D0097 /* NetworkingInterface in Frameworks */ = {isa = PBXBuildFile; productRef = CEFF5C4529EFF5CB005D0097 /* NetworkingInterface */; };
-		CEFF5C5129EFF670005D0097 /* MovieDetailFeature.h in Headers */ = {isa = PBXBuildFile; fileRef = CEFF5C5029EFF670005D0097 /* MovieDetailFeature.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CEFF5C5A29EFF89D005D0097 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = CEFF5C5929EFF89D005D0097 /* RxDataSources */; };
 		CEFF5C5D29EFF8B2005D0097 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = CEFF5C5C29EFF8B2005D0097 /* AlamofireImage */; };
 		CEFF5C6029EFF8C9005D0097 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CEFF5C5F29EFF8C9005D0097 /* RxSwift */; };
@@ -25,7 +25,8 @@
 
 /* Begin PBXFileReference section */
 		CE40489329F01F4700124C76 /* MovieDetailInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MovieDetailInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEFF5C2929EFF534005D0097 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networking; path = ../Networking/Networking; sourceTree = "<group>"; };
+		CE40491C29F02F9800124C76 /* Common */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Common; path = ../SharedLib/Common; sourceTree = "<group>"; };
+		CE40491E29F0317C00124C76 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networking; path = ../Networking/Networking; sourceTree = "<group>"; };
 		CEFF5C2E29EFF5B8005D0097 /* MovieDetailDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDetailDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFF5C3029EFF5B8005D0097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEFF5C3229EFF5B8005D0097 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,7 +37,6 @@
 		CEFF5C3E29EFF5B8005D0097 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEFF5C4829EFF639005D0097 /* MovieDetailFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = MovieDetailFeature; sourceTree = "<group>"; };
 		CEFF5C4E29EFF670005D0097 /* MovieDetailFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MovieDetailFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEFF5C5029EFF670005D0097 /* MovieDetailFeature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MovieDetailFeature.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +58,7 @@
 				CEFF5C4629EFF5CB005D0097 /* NetworkingInterface in Frameworks */,
 				CEFF5C4429EFF5CB005D0097 /* Networking in Frameworks */,
 				CE9E6C4D29EFF9DE0047B91B /* MovieDetailFeature in Frameworks */,
+				CE40491629F02BC600124C76 /* Common in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,10 +75,10 @@
 		CEFF5C1429EFF519005D0097 = {
 			isa = PBXGroup;
 			children = (
+				CE40491E29F0317C00124C76 /* Networking */,
+				CE40491C29F02F9800124C76 /* Common */,
 				CEFF5C4829EFF639005D0097 /* MovieDetailFeature */,
-				CEFF5C2829EFF534005D0097 /* Packages */,
 				CEFF5C2F29EFF5B8005D0097 /* MovieDetailDemo */,
-				CEFF5C4F29EFF670005D0097 /* MovieDetailFeature */,
 				CEFF5C1F29EFF519005D0097 /* Products */,
 				CEFF5C4229EFF5CB005D0097 /* Frameworks */,
 			);
@@ -91,14 +92,6 @@
 				CE40489329F01F4700124C76 /* MovieDetailInterface.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		CEFF5C2829EFF534005D0097 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				CEFF5C2929EFF534005D0097 /* Networking */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 		CEFF5C2F29EFF5B8005D0097 /* MovieDetailDemo */ = {
@@ -122,14 +115,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CEFF5C4F29EFF670005D0097 /* MovieDetailFeature */ = {
-			isa = PBXGroup;
-			children = (
-				CEFF5C5029EFF670005D0097 /* MovieDetailFeature.h */,
-			);
-			path = MovieDetailFeature;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -144,7 +129,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEFF5C5129EFF670005D0097 /* MovieDetailFeature.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +174,7 @@
 				CEFF5C5F29EFF8C9005D0097 /* RxSwift */,
 				CE9E6C4C29EFF9DE0047B91B /* MovieDetailFeature */,
 				CE40489A29F0206600124C76 /* MovieDetailInterface */,
+				CE40491529F02BC600124C76 /* Common */,
 			);
 			productName = MovieDetailDemo;
 			productReference = CEFF5C2E29EFF5B8005D0097 /* MovieDetailDemo.app */;
@@ -357,9 +342,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoang.MovieDetailInterface;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -387,9 +375,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoang.MovieDetailInterface;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -597,9 +588,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoang.MovieDetailFeature;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -627,9 +621,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hoang.MovieDetailFeature;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -705,6 +702,10 @@
 		CE40489A29F0206600124C76 /* MovieDetailInterface */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MovieDetailInterface;
+		};
+		CE40491529F02BC600124C76 /* Common */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Common;
 		};
 		CE9E6C4C29EFF9DE0047B91B /* MovieDetailFeature */ = {
 			isa = XCSwiftPackageProductDependency;

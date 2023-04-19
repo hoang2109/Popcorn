@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Common
 
 protocol SearchModuleFactory {
     func createSearchMovieCoordinator(navigationController: UINavigationController) -> Coordinator

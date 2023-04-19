@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Common
 
 public enum MovieDetailStep {
     case movieDetail(Int)

@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Common
 
 class ActorDetailViewController: UIViewController, StoryboardInstantiable {
     

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Common
 
 // MARK: - Steps
 public enum MainStep: Step {
