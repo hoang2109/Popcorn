@@ -12,7 +12,7 @@ public protocol Step {
 }
 
 public struct DefaultStep: Step {
-    init() { }
+    public init() { }
 }
 
 public protocol Coordinator {
@@ -20,7 +20,7 @@ public protocol Coordinator {
     func start()
 }
 
-extension Coordinator {
+public extension Coordinator {
     func start(with step: Step = DefaultStep() ) { }
     func start() { }
 }

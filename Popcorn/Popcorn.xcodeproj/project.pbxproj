@@ -46,6 +46,8 @@
 		CE15584929E6923400A8666A /* SearchModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15584829E6923400A8666A /* SearchModuleFactory.swift */; };
 		CE15584B29E6925C00A8666A /* DefaultSearchModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15584A29E6925C00A8666A /* DefaultSearchModuleFactory.swift */; };
 		CE15584D29E6961D00A8666A /* SearchMovieComponentsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE15584C29E6961D00A8666A /* SearchMovieComponentsFactory.swift */; };
+		CE40488D29F01D3D00124C76 /* MovieDetailFeature in Frameworks */ = {isa = PBXBuildFile; productRef = CE40488C29F01D3D00124C76 /* MovieDetailFeature */; };
+		CE40489D29F0224500124C76 /* MovieDetailInterface in Frameworks */ = {isa = PBXBuildFile; productRef = CE40489C29F0224500124C76 /* MovieDetailInterface */; };
 		CE9611F429E8365E00334EB1 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = CE9611F329E8365E00334EB1 /* RxDataSources */; };
 		CE9611F729E8367900334EB1 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = CE9611F629E8367900334EB1 /* AlamofireImage */; };
 		CE9611FA29E836BC00334EB1 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = CE9611F929E836BC00334EB1 /* RxCocoa */; };
@@ -164,6 +166,8 @@
 		CE15584C29E6961D00A8666A /* SearchMovieComponentsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieComponentsFactory.swift; sourceTree = "<group>"; };
 		CE2BF2EA29E7DDB8005F538C /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2BF2EB29E7DDB8005F538C /* NetworkingInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NetworkingInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE40488729F01D1B00124C76 /* MovieDetailFeature */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = MovieDetailFeature; path = ../MovieDetail/MovieDetailFeature; sourceTree = "<group>"; };
+		CE40488829F01D3200124C76 /* MovieDetailFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MovieDetailFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA2D0CE29D9349E00668907 /* Popcorn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Popcorn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEA2D0D129D9349E00668907 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEA2D0D329D9349E00668907 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,12 +243,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE40489D29F0224500124C76 /* MovieDetailInterface in Frameworks */,
 				CE9611FC29E836BC00334EB1 /* RxSwift in Frameworks */,
 				CE9611F429E8365E00334EB1 /* RxDataSources in Frameworks */,
 				CE9611F729E8367900334EB1 /* AlamofireImage in Frameworks */,
 				CE9611FA29E836BC00334EB1 /* RxCocoa in Frameworks */,
 				CE96120029E8372200334EB1 /* NetworkingInterface in Frameworks */,
 				CE9611FE29E8372200334EB1 /* Networking in Frameworks */,
+				CE40488D29F01D3D00124C76 /* MovieDetailFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +429,7 @@
 		CE2BF2E929E7DDB8005F538C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE40488829F01D3200124C76 /* MovieDetailFeature.framework */,
 				CEABB04229E835A400BF56E1 /* Networking.framework */,
 				CEABB04329E835A400BF56E1 /* NetworkingInterface.framework */,
 				CEABB02329E7E29A00BF56E1 /* Networking.framework */,
@@ -434,10 +441,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CEA2D0C529D9349E00668907 = {
+		CE40488629F01D1B00124C76 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
 				CEFF5B1D29E84112005D0097 /* Networking */,
+				CE40488729F01D1B00124C76 /* MovieDetailFeature */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		CEA2D0C529D9349E00668907 = {
+			isa = PBXGroup;
+			children = (
+				CE40488629F01D1B00124C76 /* Packages */,
 				CEA2D11129D93B1200668907 /* Popcorn.xctestplan */,
 				CEA2D0D029D9349E00668907 /* Popcorn */,
 				CEA2D0E729D9349F00668907 /* PopcornTests */,
@@ -820,6 +836,8 @@
 				CE9611FB29E836BC00334EB1 /* RxSwift */,
 				CE9611FD29E8372200334EB1 /* Networking */,
 				CE9611FF29E8372200334EB1 /* NetworkingInterface */,
+				CE40488C29F01D3D00124C76 /* MovieDetailFeature */,
+				CE40489C29F0224500124C76 /* MovieDetailInterface */,
 			);
 			productName = Popcorn;
 			productReference = CEA2D0CE29D9349E00668907 /* Popcorn.app */;
@@ -1313,6 +1331,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE40488C29F01D3D00124C76 /* MovieDetailFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieDetailFeature;
+		};
+		CE40489C29F0224500124C76 /* MovieDetailInterface */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieDetailInterface;
+		};
 		CE9611F329E8365E00334EB1 /* RxDataSources */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE9611F229E8365E00334EB1 /* XCRemoteSwiftPackageReference "RxDataSources" */;

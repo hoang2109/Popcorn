@@ -7,14 +7,15 @@
 
 import Foundation
 import UIKit
+import MovieDetailInterface
 
 class DefaultSearchMovieCoordinator: SearchMovieCoordinator {
     var navigationController: UINavigationController
     private let searchMovieComponentsFactory: SearchMovieComponentsFactory
-    private let movieDetailModuleFactory: MovieDetailModuleFactory
-    private var childCoordinators = [UUID: Coordinator]()
+    private let movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory
+    private var childCoordinators = [UUID: MovieDetailInterface.Coordinator]()
     
-    init(navigationController: UINavigationController, searchMovieComponentsFactory: SearchMovieComponentsFactory, movieDetailModuleFactory: MovieDetailModuleFactory) {
+    init(navigationController: UINavigationController, searchMovieComponentsFactory: SearchMovieComponentsFactory, movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory) {
         self.navigationController = navigationController
         self.searchMovieComponentsFactory = searchMovieComponentsFactory
         self.movieDetailModuleFactory = movieDetailModuleFactory

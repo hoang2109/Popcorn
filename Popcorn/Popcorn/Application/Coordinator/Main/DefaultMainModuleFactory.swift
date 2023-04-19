@@ -7,13 +7,14 @@
 
 import Foundation
 import UIKit
+import MovieDetailInterface
 
 class DefaultMainModuleFactory: MainModuleFactory {
     
     private let mainComponentsFactory: MainComponentsFactory
-    private let movieDetailModuleFactory: MovieDetailModuleFactory
+    private let movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory
     
-    init(mainComponentsFactory: MainComponentsFactory, movieDetailModuleFactory: MovieDetailModuleFactory) {
+    init(mainComponentsFactory: MainComponentsFactory, movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory) {
         self.mainComponentsFactory = mainComponentsFactory
         self.movieDetailModuleFactory = movieDetailModuleFactory
     }

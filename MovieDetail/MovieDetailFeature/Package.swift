@@ -13,6 +13,9 @@ let package = Package(
         .library(
             name: "MovieDetailFeature",
             targets: ["MovieDetailFeature"]),
+        .library(
+            name: "MovieDetailInterface",
+            targets: ["MovieDetailInterface"]),
     ],
     dependencies: [
         .package(path: "../../Networking/Networking"),
@@ -23,7 +26,10 @@ let package = Package(
     ],
     targets: [
         .target(
+            name: "MovieDetailInterface",
+            dependencies: []),
+        .target(
             name: "MovieDetailFeature",
-            dependencies: ["Networking", "RxSwift", "RxDataSources", "AlamofireImage"]),
+            dependencies: ["Networking", "RxSwift", "RxDataSources", "AlamofireImage", "MovieDetailInterface"]),
     ]
 )

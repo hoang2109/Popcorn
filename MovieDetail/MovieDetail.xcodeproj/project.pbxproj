@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE40489B29F0206600124C76 /* MovieDetailInterface in Frameworks */ = {isa = PBXBuildFile; productRef = CE40489A29F0206600124C76 /* MovieDetailInterface */; };
 		CE9E6C4D29EFF9DE0047B91B /* MovieDetailFeature in Frameworks */ = {isa = PBXBuildFile; productRef = CE9E6C4C29EFF9DE0047B91B /* MovieDetailFeature */; };
 		CEFF5C3129EFF5B8005D0097 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF5C3029EFF5B8005D0097 /* AppDelegate.swift */; };
 		CEFF5C3329EFF5B8005D0097 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF5C3229EFF5B8005D0097 /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE40489329F01F4700124C76 /* MovieDetailInterface.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MovieDetailInterface.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFF5C2929EFF534005D0097 /* Networking */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Networking; path = ../Networking/Networking; sourceTree = "<group>"; };
 		CEFF5C2E29EFF5B8005D0097 /* MovieDetailDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieDetailDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEFF5C3029EFF5B8005D0097 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +40,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		CE40489029F01F4700124C76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEFF5C2B29EFF5B8005D0097 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -45,6 +54,7 @@
 				CEFF5C5A29EFF89D005D0097 /* RxDataSources in Frameworks */,
 				CEFF5C5D29EFF8B2005D0097 /* AlamofireImage in Frameworks */,
 				CEFF5C6029EFF8C9005D0097 /* RxSwift in Frameworks */,
+				CE40489B29F0206600124C76 /* MovieDetailInterface in Frameworks */,
 				CEFF5C4629EFF5CB005D0097 /* NetworkingInterface in Frameworks */,
 				CEFF5C4429EFF5CB005D0097 /* Networking in Frameworks */,
 				CE9E6C4D29EFF9DE0047B91B /* MovieDetailFeature in Frameworks */,
@@ -78,6 +88,7 @@
 			children = (
 				CEFF5C2E29EFF5B8005D0097 /* MovieDetailDemo.app */,
 				CEFF5C4E29EFF670005D0097 /* MovieDetailFeature.framework */,
+				CE40489329F01F4700124C76 /* MovieDetailInterface.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,6 +133,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		CE40488E29F01F4700124C76 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEFF5C4929EFF670005D0097 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -133,6 +151,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		CE40489229F01F4700124C76 /* MovieDetailInterface */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE40489929F01F4700124C76 /* Build configuration list for PBXNativeTarget "MovieDetailInterface" */;
+			buildPhases = (
+				CE40488E29F01F4700124C76 /* Headers */,
+				CE40488F29F01F4700124C76 /* Sources */,
+				CE40489029F01F4700124C76 /* Frameworks */,
+				CE40489129F01F4700124C76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MovieDetailInterface;
+			productName = MovieDetailInterface;
+			productReference = CE40489329F01F4700124C76 /* MovieDetailInterface.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		CEFF5C2D29EFF5B8005D0097 /* MovieDetailDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEFF5C4129EFF5B8005D0097 /* Build configuration list for PBXNativeTarget "MovieDetailDemo" */;
@@ -153,6 +189,7 @@
 				CEFF5C5C29EFF8B2005D0097 /* AlamofireImage */,
 				CEFF5C5F29EFF8C9005D0097 /* RxSwift */,
 				CE9E6C4C29EFF9DE0047B91B /* MovieDetailFeature */,
+				CE40489A29F0206600124C76 /* MovieDetailInterface */,
 			);
 			productName = MovieDetailDemo;
 			productReference = CEFF5C2E29EFF5B8005D0097 /* MovieDetailDemo.app */;
@@ -186,6 +223,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					CE40489229F01F4700124C76 = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					CEFF5C2D29EFF5B8005D0097 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -214,11 +254,19 @@
 			targets = (
 				CEFF5C2D29EFF5B8005D0097 /* MovieDetailDemo */,
 				CEFF5C4D29EFF670005D0097 /* MovieDetailFeature */,
+				CE40489229F01F4700124C76 /* MovieDetailInterface */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		CE40489129F01F4700124C76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEFF5C2C29EFF5B8005D0097 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -239,6 +287,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		CE40488F29F01F4700124C76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CEFF5C2A29EFF5B8005D0097 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -278,6 +333,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		CE40489729F01F4700124C76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hoang.MovieDetailInterface;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE40489829F01F4700124C76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hoang.MovieDetailInterface;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		CEFF5C2329EFF519005D0097 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -521,6 +636,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CE40489929F01F4700124C76 /* Build configuration list for PBXNativeTarget "MovieDetailInterface" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE40489729F01F4700124C76 /* Debug */,
+				CE40489829F01F4700124C76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CEFF5C1829EFF519005D0097 /* Build configuration list for PBXProject "MovieDetail" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -578,6 +702,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE40489A29F0206600124C76 /* MovieDetailInterface */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MovieDetailInterface;
+		};
 		CE9E6C4C29EFF9DE0047B91B /* MovieDetailFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MovieDetailFeature;

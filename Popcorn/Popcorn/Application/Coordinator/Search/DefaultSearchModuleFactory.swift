@@ -7,12 +7,13 @@
 
 import Foundation
 import UIKit
+import MovieDetailInterface
 
 class DefaultSearchModuleFactory: SearchModuleFactory {
     private let searchMovieComponentsFactory: SearchMovieComponentsFactory
-    private let movieDetailModuleFactory: MovieDetailModuleFactory
+    private let movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory
     
-    init(searchMovieComponentsFactory: SearchMovieComponentsFactory, movieDetailModuleFactory: MovieDetailModuleFactory) {
+    init(searchMovieComponentsFactory: SearchMovieComponentsFactory, movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory) {
         self.searchMovieComponentsFactory = searchMovieComponentsFactory
         self.movieDetailModuleFactory = movieDetailModuleFactory
     }

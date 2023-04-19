@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import NetworkingInterface
+import MovieDetailInterface
 
 public class DefaultMovieDetailComponentFactory: MovieDetailComponentFactory {
     private let networkService: DataTransferService

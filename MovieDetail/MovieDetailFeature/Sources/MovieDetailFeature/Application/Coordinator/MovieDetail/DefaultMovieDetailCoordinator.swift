@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MovieDetailInterface
 
 class DefaultMovieDetailCoordinator: MovieDetailCoordinator {
     var onFinish: (() -> Void)?

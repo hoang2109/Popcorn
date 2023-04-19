@@ -8,6 +8,8 @@
 import Foundation
 import NetworkingInterface
 import Networking
+import MovieDetailInterface
+import MovieDetailFeature
 
 class AppDIContainer {
     private let appConfiguration: AppConfiguration
@@ -35,9 +37,9 @@ class AppDIContainer {
         return factory
     }
     
-    func createMovieDetailModuleFactory() -> MovieDetailModuleFactory {
-        let movieDetailComponentFactory = DefaultMovieDetailComponentFactory(networkService: networkService)
-        let factory = DefaultMovieDetailModuleFactory(movieDetailComponentFactory: movieDetailComponentFactory)
+    func createMovieDetailModuleFactory() -> MovieDetailInterface.MovieDetailModuleFactory {
+        let movieDetailComponentFactory = MovieDetailFeature.DefaultMovieDetailComponentFactory(networkService: networkService)
+        let factory = MovieDetailFeature.DefaultMovieDetailModuleFactory(movieDetailComponentFactory: movieDetailComponentFactory)
         return factory
     }
     
