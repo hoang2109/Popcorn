@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I9w-Kl-3oa">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--SearchMovieViewController-->
+        <scene sceneID="CSI-ab-lX3">
+            <objects>
+                <viewController storyboardIdentifier="SearchMovieViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I9w-Kl-3oa" userLabel="SearchMovieViewController" customClass="SearchMovieViewController" customModule="Popcorn" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FvN-WE-iXC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3el-QF-0nQ">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6i5-Mq-8P1"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3el-QF-0nQ" firstAttribute="top" secondItem="6i5-Mq-8P1" secondAttribute="top" id="K8j-Jv-KOE"/>
+                            <constraint firstItem="3el-QF-0nQ" firstAttribute="leading" secondItem="6i5-Mq-8P1" secondAttribute="leading" id="Wwc-LV-ajA"/>
+                            <constraint firstItem="3el-QF-0nQ" firstAttribute="bottom" secondItem="6i5-Mq-8P1" secondAttribute="bottom" id="mjY-XI-MN4"/>
+                            <constraint firstItem="6i5-Mq-8P1" firstAttribute="trailing" secondItem="3el-QF-0nQ" secondAttribute="trailing" id="ra2-Q9-2hx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Search" id="7Hk-Nb-BpK"/>
+                    <connections>
+                        <outlet property="discoveryMoviesTableView" destination="3el-QF-0nQ" id="CRt-I6-O2P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jLb-2a-7jJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4796" y="773"/>
+        </scene>
+    </scenes>
+</document>
