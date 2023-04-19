@@ -16,9 +16,6 @@ class DefaultMainComponentsFactory: MainComponentsFactory {
     private lazy var movieRepository: MovieRepository = {
         return DefaultMovieRepository(networkService: networkService)
     }()
-    private lazy var creditRepository: CreditRepository = {
-        return DefaultCreditRepository(networkService: networkService)
-    }()
     
     init(networkService: DataTransferService) {
         self.networkService = networkService

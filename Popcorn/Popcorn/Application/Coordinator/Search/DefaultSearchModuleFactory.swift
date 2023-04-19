@@ -11,9 +11,9 @@ import MovieDetailInterface
 
 class DefaultSearchModuleFactory: SearchModuleFactory {
     private let searchMovieComponentsFactory: SearchMovieComponentsFactory
-    private let movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory
+    private let movieDetailModuleFactory: MovieDetailModuleFactory
     
-    init(searchMovieComponentsFactory: SearchMovieComponentsFactory, movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory) {
+    init(searchMovieComponentsFactory: SearchMovieComponentsFactory, movieDetailModuleFactory: MovieDetailModuleFactory) {
         self.searchMovieComponentsFactory = searchMovieComponentsFactory
         self.movieDetailModuleFactory = movieDetailModuleFactory
     }

@@ -37,8 +37,8 @@ class AppDIContainer {
         return factory
     }
     
-    func createMovieDetailModuleFactory() -> MovieDetailInterface.MovieDetailModuleFactory {
-        let movieDetailComponentFactory = MovieDetailFeature.DefaultMovieDetailComponentFactory(networkService: networkService)
+    func createMovieDetailModuleFactory() -> MovieDetailModuleFactory {
+        let movieDetailComponentFactory = DefaultMovieDetailComponentFactory(networkService: networkService)
         let factory = MovieDetailFeature.DefaultMovieDetailModuleFactory(movieDetailComponentFactory: movieDetailComponentFactory)
         return factory
     }

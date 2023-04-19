@@ -12,9 +12,9 @@ import MovieDetailInterface
 class DefaultMainModuleFactory: MainModuleFactory {
     
     private let mainComponentsFactory: MainComponentsFactory
-    private let movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory
+    private let movieDetailModuleFactory: MovieDetailModuleFactory
     
-    init(mainComponentsFactory: MainComponentsFactory, movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory) {
+    init(mainComponentsFactory: MainComponentsFactory, movieDetailModuleFactory: MovieDetailModuleFactory) {
         self.mainComponentsFactory = mainComponentsFactory
         self.movieDetailModuleFactory = movieDetailModuleFactory
     }

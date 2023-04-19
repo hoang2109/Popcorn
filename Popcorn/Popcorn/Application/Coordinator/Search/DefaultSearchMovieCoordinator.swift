@@ -12,10 +12,10 @@ import MovieDetailInterface
 class DefaultSearchMovieCoordinator: SearchMovieCoordinator {
     var navigationController: UINavigationController
     private let searchMovieComponentsFactory: SearchMovieComponentsFactory
-    private let movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory
+    private let movieDetailModuleFactory: MovieDetailModuleFactory
     private var childCoordinators = [UUID: MovieDetailInterface.Coordinator]()
     
-    init(navigationController: UINavigationController, searchMovieComponentsFactory: SearchMovieComponentsFactory, movieDetailModuleFactory: MovieDetailInterface.MovieDetailModuleFactory) {
+    init(navigationController: UINavigationController, searchMovieComponentsFactory: SearchMovieComponentsFactory, movieDetailModuleFactory: MovieDetailModuleFactory) {
         self.navigationController = navigationController
         self.searchMovieComponentsFactory = searchMovieComponentsFactory
         self.movieDetailModuleFactory = movieDetailModuleFactory
