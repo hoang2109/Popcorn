@@ -6,8 +6,7 @@
 //
 
 import UIKit
-import Common
 
 public protocol MovieDetailModuleFactory {
-    func createMovieDetailCoordinator(movieId: Int?, navigationController: UINavigationController, completion: @escaping () -> Void) -> Coordinator
+    func createMovieDetailCoordinator(movieId: Int?, navigationController: UINavigationController, completion: @escaping () -> Void) -> MovieDetailCoordinator
 }

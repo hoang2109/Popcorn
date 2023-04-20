@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import MovieDetailInterface
 
 public protocol MovieDetailComponentFactory {
     func createMovieDetailViewController(with movieId: Int, coordinator: MovieDetailCoordinator) -> UIViewController
