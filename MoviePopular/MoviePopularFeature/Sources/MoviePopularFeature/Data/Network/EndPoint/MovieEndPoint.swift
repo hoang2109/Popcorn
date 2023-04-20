@@ -13,14 +13,7 @@ enum MovieEndPoint {
     case getTopRatedMovies(Int)
     case getUpComingMovies(Int)
     case getNowPlayingMovies(Int)
-    case getMovieCredits(Int)
-    case getVideoTrailers(Int)
-    case getMovieDetail(Int)
-    case getDiscoverMovies
-    case searchMovie(String)
     case getMovies(String, Int)
-    case getActorDetail(Int)
-    case getActorCredits(Int)
 }
 
 extension MovieEndPoint: EndPoint {
@@ -35,22 +28,8 @@ extension MovieEndPoint: EndPoint {
             return "/3/movie/upcoming"
         case .getNowPlayingMovies:
             return "/3/movie/now_playing"
-        case .getMovieCredits(let movieId):
-            return "/3/movie/\(movieId)/credits"
-        case .getVideoTrailers(let movieId):
-            return "/3/movie/\(movieId)/videos"
-        case .getMovieDetail(let movieId):
-            return "/3/movie/\(movieId)"
-        case .getDiscoverMovies:
-            return "/3/discover/movie"
-        case .searchMovie:
-            return "/3/search/movie"
         case .getMovies(let category, _):
             return "/3/movie/\(category)"
-        case .getActorDetail(let id):
-            return "/3/person/\(id)"
-        case .getActorCredits(let id):
-            return "/3/person/\(id)/movie_credits"
         }
     }
     
@@ -66,19 +45,8 @@ extension MovieEndPoint: EndPoint {
             parameters["page"] = page
         case .getNowPlayingMovies(let page):
             parameters["page"] = page
-        case .getDiscoverMovies:
-            parameters["sort_by"] = "popularity.desc"
-            parameters["include_adult"] = false
-            parameters["include_video"] = false
-            parameters["page"] = 1
-            parameters["with_watch_monetization_types"] = "flatrate"
-        case .searchMovie(let query):
-            parameters["query"] = query
-            parameters["page"] = 1
         case .getMovies( _, let page):
             parameters["page"] = page
-        default:
-            break
         }
         return parameters
     }

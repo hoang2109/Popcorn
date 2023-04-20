@@ -10,5 +10,5 @@ import UIKit
 import Common
 
 public protocol MainModuleFactory {
-    func createMainCoordinator(navigationController: UINavigationController) -> Coordinator
+    func createMainCoordinator(navigationController: UINavigationController) -> MainCoordinator
 }
