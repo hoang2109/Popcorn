@@ -20,7 +20,7 @@ public class DefaultSearchModuleFactory: SearchModuleFactory {
         self.movieDetailModuleFactory = movieDetailModuleFactory
     }
     
-    public func createSearchMovieCoordinator(navigationController: UINavigationController) -> Coordinator {
+    public func createSearchMovieCoordinator(navigationController: UINavigationController) -> SearchMovieCoordinator {
         let coordinator = DefaultSearchMovieCoordinator(navigationController: navigationController,
                                                         searchMovieComponentsFactory: searchMovieComponentsFactory,
                                                         movieDetailModuleFactory: movieDetailModuleFactory)

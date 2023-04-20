@@ -10,5 +10,5 @@ import UIKit
 import Common
 
 public protocol SearchModuleFactory {
-    func createSearchMovieCoordinator(navigationController: UINavigationController) -> Coordinator
+    func createSearchMovieCoordinator(navigationController: UINavigationController) -> SearchMovieCoordinator
 }
