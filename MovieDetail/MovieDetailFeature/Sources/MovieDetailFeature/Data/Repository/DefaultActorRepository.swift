@@ -25,7 +25,7 @@ class DefaultActorRepository: ActorRepository {
     
     func fetchActorCredits(_ actorId: Int) -> Observable<[Movie]> {
         let endPoind = MovieEndPoint.getActorCredits(actorId)
-        return networkService.request(endPoind, ActorCreditsResponse.self.self).map {
+        return networkService.request(endPoind, ActorCreditsResponse.self).map {
             $0.cast.toModels()
         }
     }
