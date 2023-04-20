@@ -8,13 +8,13 @@
 import UIKit
 
 extension UIView {
-    func addSubViews(view: UIView...){
+    public func addSubViews(view: UIView...){
         view.forEach { view in
             addSubview(view)
         }
     }
     
-    func pinToEdges(superview : UIView){
+    public func pinToEdges(superview : UIView){
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             topAnchor.constraint(equalTo:superview.safeAreaLayoutGuide.topAnchor),
@@ -24,7 +24,7 @@ extension UIView {
         ])
     }
     
-    func pintoCenter (superView : UIView){
+    public func pintoCenter (superView : UIView){
         translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             centerXAnchor.constraint(equalTo: superView.centerXAnchor),
