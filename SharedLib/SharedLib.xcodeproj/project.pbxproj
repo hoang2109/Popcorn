@@ -26,8 +26,6 @@
 			isa = PBXGroup;
 			children = (
 				CE40490629F02B4000124C76 /* Common */,
-				CE4048FE29F02B2200124C76 /* SharedLib */,
-				CE40490D29F02B5500124C76 /* Common */,
 				CE4048FD29F02B2200124C76 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -38,20 +36,6 @@
 				CE40490C29F02B5500124C76 /* Common.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		CE4048FE29F02B2200124C76 /* SharedLib */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SharedLib;
-			sourceTree = "<group>";
-		};
-		CE40490D29F02B5500124C76 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import Common
+import MoviePopularInterface
+import MovieSearchInterface
 
 public enum AppChildCoordinator {
     case main

@@ -10,6 +10,10 @@ import NetworkingInterface
 import Networking
 import MovieDetailInterface
 import MovieDetailFeature
+import MoviePopularFeature
+import MoviePopularInterface
+import MovieSearchFeature
+import MovieSearchInterface
 
 class AppDIContainer {
     private let appConfiguration: AppConfiguration
